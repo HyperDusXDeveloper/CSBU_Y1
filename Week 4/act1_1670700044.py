@@ -19,5 +19,3 @@ elif num >= 101 and num <= 1000 :
 else :
     print("Out of Range ! \n Please enter 0 - 1000 ")
 print("-"*40) 
-
-
