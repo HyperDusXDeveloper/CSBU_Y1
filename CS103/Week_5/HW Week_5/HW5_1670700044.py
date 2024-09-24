@@ -66,23 +66,20 @@ for info in range (Costomer) :
         total = order+shipping+discount
         print(f"Order : {info+1}  > {"Order total":<14} : {total:>10.2f}")
         print("="*42)
-
         # total Order Summary
         ordersum = ordersum + order
         shippingsum = shippingsum + shipping
         discountsum = discountsum + discount
-
     else : #else Destinatoin
-
         # Display  total Order Summary
         print("Invalid destination code ! Please try again. ")
-        print(title3)
-        print(f"All {"Order total summary ":<10} : {ordersum:>10.2f}")
-        print(f"All {"Total Shipping":<20} : {shippingsum:>10.2f}")
-        print(f"All {"Total Discount":<20} : {discountsum*-1:>10.2f}")
-        print("="*42)
-        totalsum = ordersum+shippingsum+discountsum
-        print(f"All {"Order total":<20} : {totalsum:>10.2f}")
-        print("="*42)
-        # Test total all sum
-        # print(f"{ordersum} {shippingsum} discountsum = {discountsum*-1}")
+# Test total all sum
+# print(f"{ordersum} {shippingsum} discountsum = {discountsum*-1}")
+print(title3)
+print(f"All {"Order total summary ":<10} : {ordersum:>10.2f}")
+print(f"All {"Total Shipping":<20} : {shippingsum:>10.2f}")
+print(f"All {"Total Discount":<20} : {discountsum*-1:>10.2f}")
+print("="*42)
+totalsum = ordersum+shippingsum+discountsum
+print(f"All {"Order total":<20} : {totalsum:>10.2f}")
+print("="*42)
