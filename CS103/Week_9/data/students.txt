@@ -1,0 +1,10 @@
+S0001 Sirinthorn Cheyasak                 F 1.98
+S0002 Jones Kivell                        M 1.89
+S0003 Jardine Gill                        M 3.45
+S0004 Sorvino Jones                       F 2.56
+S0005 Andrews Jardine                     M 3.56
+S0006 Thompson Morgan                     M 2.65
+S0007 Howard Parent                       M 1.79
+S0008 Smith Marent                        M 2.98
+S0009 Yimyim Smilly                       F 3.12
+S0010 Sookdee Makmesuk                    F 1.92

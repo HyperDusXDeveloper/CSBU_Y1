@@ -1,0 +1,10 @@
+Alice, 85
+Bob, 78
+Charlie, 90
+David, 67
+Eva, 92
+Frank, 75
+Grace, 88
+Hannah, 82
+Isaac, 95
+Jack, 73

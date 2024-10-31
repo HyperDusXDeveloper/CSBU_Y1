@@ -1,0 +1,2 @@
+Total male = 2 , Total female = 3
+Average of salary = 26360.00
