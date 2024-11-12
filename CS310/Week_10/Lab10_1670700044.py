@@ -1,5 +1,5 @@
 studentlist = []
-with open ('data/student_info.txt','r') as file1 :
+with open ('Week_10/data/student_info.txt','r') as file1 :
     with open('data/exam_scores.txt','r') as file2 :
         data1 = file1.read() .splitlines()
         for line in data1 :

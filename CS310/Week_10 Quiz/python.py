@@ -3,4 +3,4 @@ with open("Week_10 Quiz/data/Score.txt" , "r") as file :
     print(data_Score)
     for line in data_Score :
         word = line.split()
-        print(line)
+        print(word[1])
