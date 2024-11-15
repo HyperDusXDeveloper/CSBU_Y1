@@ -1,64 +1,80 @@
-title_1 = '''
-------------------------------------------------------------------
+def menu() :
+    print('''------------------------------------------------------------------
                             Menu
 ------------------------------------------------------------------
 C : Circle Area
 T : Triangle Area
 R : Rectangle Area 
 E : Exit 
-------------------------------------------------------------------'''
-
-output_circle = '''
+------------------------------------------------------------------''')
+    
+def Circle() :
+    print ('''
 ------------------------------------------------------------------
                         Output of Circle
-------------------------------------------------------------------'''
+------------------------------------------------------------------''')
 
-output_triangle = '''
+def Triangle() :
+    print ( '''
 ------------------------------------------------------------------
                         Output of Triangle
-------------------------------------------------------------------'''
+------------------------------------------------------------------''')
 
-output_rectangle = '''
+def rectangle() :
+    print ('''
 ------------------------------------------------------------------
                         Output of rectangle
-------------------------------------------------------------------'''
+------------------------------------------------------------------''')
 
-# i = 1
-# while i > 0 :
-# while i > 1 :
-print(title_1)
-def Function_input_Area() :
+def inputmenu() :
     menu_input = input("Enter menu : ")
     return(menu_input.upper())
 
-def function_if(menu_input) :
+def inputarea(menu_input) :
     if menu_input == "C" :
-        radius = int(input("Enter Radius : "))
-        print(output_circle)
+        radius = float(input("Enter Radius : "))
+        Circle()
         return(radius)
     elif menu_input == "T" :
-        base = int(input("Enter Base : "))
-        height = int(input("Enter Height : "))
-        print(output_triangle)
-        return(base,height)
+        base = float(input("Enter Base : "))
+        height = float(input("Enter Height : "))
+        Triangle()
+        return(base ,height)
     elif menu_input == "R" :
-        width = int(input("Enter Width : "))
-        length = int(input("Enter Length : "))
-        print(output_rectangle)
-        return(width,length)
-    # elif menu_input == "E" :
-    else :
-         print("ERROR !!!")
-    # return(radius , base , height , width , length)
+        width = float(input("Enter Width : "))
+        length = float(input("Enter Length : "))
+        rectangle()
+        return(width , length)
 
-def calculate_area(radius , base , height , width , length):
-    if menu_input == "C" :
+def calculateCircle(radius):
         circle_sum = (22/7) * radius**2
-        print(f"{ 'Output of Circle = '}:>20 {circle_sum}")
-    return(circle_sum)
+        print(f"{ 'Output of Circle = '}  {circle_sum}".center(60))
+        return(circle_sum)
 
-menu_input = Function_input_Area()
-som1 , som2 = function_if(menu_input)
-circle_sum = calculate_area()
-# Circle , Triangle , Rectangle
-# fodfddffdf
+def calculateTriangle(base , height):
+        Triangle_sum = 1/2 * base * height
+        print(f"{ 'Output of Triangle = '} {Triangle_sum}".center(70))
+        return(Triangle_sum)
+
+def calculateRectangle(width , length):
+        rectangle_sum = width * length
+        print(f"{ 'Output of Triangle = '} {rectangle_sum}".center(70))
+        return(rectangle_sum)
+
+CalculatorRun = True
+while CalculatorRun :
+    menu()
+    menu_input = inputmenu()
+    if menu_input == "C" :
+        radius  = inputarea(menu_input)
+        circle_sum = calculateCircle(radius)
+    elif menu_input == "T" :
+        base , height  = inputarea(menu_input)
+        Triangle_sum = calculateTriangle(base , height)
+    elif menu_input == "R" :
+        width , length  = inputarea(menu_input)
+        rectangle_sum = calculateRectangle(width , length)
+    elif menu_input == "E" :
+        CalculatorRun = False
+    else :
+        print("ERROR !!! ")
