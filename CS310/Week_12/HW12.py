@@ -51,17 +51,17 @@ def inputarea(menu_input) :
 
 def calculateCircle(radius):
         circle_sum = (22/7) * radius**2
-        print(f"{ 'Output of Circle = '}  {circle_sum}".center(60))
+        print(f"{ 'Output of Circle = '}  {circle_sum:.2f}".center(60))
         return(circle_sum)
 
 def calculateTriangle(base , height):
         Triangle_sum = 1/2 * base * height
-        print(f"{ 'Output of Triangle = '} {Triangle_sum}".center(70))
+        print(f"{ 'Output of Triangle = '} {Triangle_sum:.2f}".center(70))
         return(Triangle_sum)
 
 def calculateRectangle(width , length):
         rectangle_sum = width * length
-        print(f"{ 'Output of Triangle = '} {rectangle_sum}".center(70))
+        print(f"{ 'Output of Triangle = '} {rectangle_sum:.2f}".center(70))
         return(rectangle_sum)
 
 CalculatorRun = True
