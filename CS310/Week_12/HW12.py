@@ -31,15 +31,18 @@ def inputmenu() :
     return(menu_input.upper())
 
 def inputarea(menu_input) :
+
     if menu_input == "C" :
         radius = float(input("Enter Radius : "))
         Circle()
         return(radius)
+    
     elif menu_input == "T" :
         base = float(input("Enter Base : "))
         height = float(input("Enter Height : "))
         Triangle()
         return(base ,height)
+    
     elif menu_input == "R" :
         width = float(input("Enter Width : "))
         length = float(input("Enter Length : "))
@@ -63,18 +66,24 @@ def calculateRectangle(width , length):
 
 CalculatorRun = True
 while CalculatorRun :
+
     menu()
     menu_input = inputmenu()
+
     if menu_input == "C" :
         radius  = inputarea(menu_input)
         circle_sum = calculateCircle(radius)
+
     elif menu_input == "T" :
         base , height  = inputarea(menu_input)
         Triangle_sum = calculateTriangle(base , height)
+
     elif menu_input == "R" :
         width , length  = inputarea(menu_input)
         rectangle_sum = calculateRectangle(width , length)
+
     elif menu_input == "E" :
         CalculatorRun = False
+
     else :
         print("ERROR !!! ")
