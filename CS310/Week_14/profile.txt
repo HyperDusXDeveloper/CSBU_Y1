@@ -1,0 +1,6 @@
+1001 Panee    Sukdee      P 15000 450000
+1002 Suwit    Pongnonta   P 18000 560000
+1003 Ratchata Meemonkon   F 20000 600000
+1004 Peerada  Ketpong     P 16000 350000
+1005 Taweep   Rujirote    F 23000 540000
+1006 Kunya    Wongpisasin P 19000 490000
