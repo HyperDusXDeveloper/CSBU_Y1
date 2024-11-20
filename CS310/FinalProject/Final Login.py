@@ -24,7 +24,7 @@ def title(title_num):
 
 def regester():
     title(3)
-    username_regester = input("Please Enter Username : ")
+    username = input("Please Enter Username : ")
     password = input("Please Enter Password : ")
     check_password_found = False
     while not check_password_found:
@@ -36,26 +36,12 @@ def regester():
                 break  
         if not check_password_found:
             print("Invalid Password Please Try Again.")
-    # return(username,password)
 
-# username,password,confirm_password = regester()
-# print(username,password,confirm_password)
 
 def login() :
     title(4)
     username = input("Please Enter Username : ")
     password = input("Please Enter Password : ")
-    # check_password_found = False
-    # while not check_password_found:
-    #     confirm_password = input("Please Confirm Password : ")
-    #     for check in password:
-    #         if confirm_password == password: 
-    #             print("Regester Succeed !")
-    #             check_password_found = True
-    #             break  
-    #     if not check_password_found:
-    #         print("Invalid Password Please Try Again.")
-    return(username,password)
 
 
 
