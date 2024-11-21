@@ -1,8 +1,0 @@
-Mementowww 123456
-Mekin 1234
-AA 12
-BB 24
-CC 36
-AB 123
-FF 123
-DD 1234

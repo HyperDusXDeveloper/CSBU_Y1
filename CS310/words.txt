@@ -1,0 +1,4 @@
+banana:It has a yellow Skin and  has a sweet flavor banana
+apple:It has a red Skin and  has a sweet and  flavor apple
+orange:It has a yellow Skin and  has a sweet flavor orange
+watermalon:It has a yellow Skin and  has a sweet flavor watermalon

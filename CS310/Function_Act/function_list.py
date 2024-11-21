@@ -55,21 +55,21 @@
 # z = Arguments_function("hi",x,y)
 # print("Z : Sum = " , z)
 
-def Arguments_function(name,x,y) : 
-    sum = x + y
-    z = int(input("Z : Enter number : "))
-    z = z + sum * sum
-    print("hello",name , "sum " ,sum)
-    return(z,x)
+# def Arguments_function(name,x,y) : 
+#     sum = x + y
+#     z = int(input("Z : Enter number : "))
+#     z = z + sum * sum
+#     print("hello",name , "sum " ,sum)
+#     return(z,x) #Local
 
-x = int(input("X : Enter Number : "))
-y = int(input("Y : Enter Number : "))
-z,x = Arguments_function("hi",x,y)
+# x = int(input("X : Enter Number : "))
+# y = int(input("Y : Enter Number : "))
+# z,x = Arguments_function("hi",x,y)
 
 
-def  Arguments_function_return() : 
-    z =  x * 10
-    print("Z : Sum = " , z) #Local
+# def  Arguments_function_return() : 
+#     z =  x * 10
+#     print("Z : Sum = " , z) #Local
 
-Arguments_function_return()
-print(z) #Global
+# Arguments_function_return()
+# print(z) #Global
