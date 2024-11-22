@@ -1,5 +1,4 @@
 import random
-import hashlib
 
 # Random Word
 def title(title_num):
@@ -27,6 +26,9 @@ def title(title_num):
 
 def play():
     global score
+    global total_score
+    global fail_score
+    global nc_score
     words = []
     with open("words.txt", "r") as file:
         for line in file:
@@ -39,13 +41,18 @@ def play():
         guess = input("ทายคำศัพท์: ")
         if guess.lower() == word.lower():
             score += 1
+            total_score += 1
+            nc_score += 1
             print(f"ถูกต้อง! คุณทายคำศัพท์ถูก")
+            print("Score +1")
         else:
             score -= 1
+            total_score += 1
+            fail_score += 1
             print("ผิด! ลองใหม่")
-        print(score)
+            print("Score -1")
 
-    save_user(user, score)
+    save_user()
 
 def regester():
     title(3)
@@ -77,7 +84,7 @@ def regester():
             check_password_found = False
             
     with open("data_user.txt","a") as file :
-        file.write(f"{username} {password} 0\n")
+        file.write(f"{username} {password} 0 0 0 0\n")
 
 def login() :
     title(4)
@@ -94,41 +101,46 @@ def login() :
                 global check_login
                 global user
                 global score
+                global total_score
+                global fail_score
+                global nc_score
                 check_login = False
-                user = username
+                user = item[0]
                 score = int(item[2])
+                total_score = int(item[3])
+                fail_score = int(item[4])
+                nc_score = int(item[5])
                 
         if check_fail == True:
             print("Invalid Confirm Password Please Try Again.")
 
-def save_user(username, score):
+def save_user():
     info = []
     with open("data_user.txt","r") as file :
         data = file.readlines()
         for i in data :
             item = i.split()
-            if username == item[0] :
-                info.append([item[0],item[1],score])
+            if user == item[0] :
+                info.append([item[0],item[1],score,total_score,fail_score,nc_score])
             else :
-                info.append([item[0],item[1],item[2]])
+                info.append([item[0],item[1],item[2],item[3],item[4],item[5]])
 
     with open("data_user.txt","w") as file :
         for item in info :
-            if username == item[0] :
-                file.write(f"{item[0]} {item[1]} {item[2]}\n")
-            else :
-                file.write(f"{item[0]} {item[1]} {item[2]}\n")
+            file.write(f"{item[0]} {item[1]} {item[2]} {item[3]} {item[4]} {item[5]}\n")
 
 def profile():
     print('Username : ',user)
     print('Score : ',score)
-    # print('score1')
-    # print('score2')
-    # print('score3')
-
+    print('Succeed : ',nc_score)
+    print('Fail : ',fail_score)
+    print('Total : ',total_score)
 
 user = ''
 score = 0
+total_score = 0
+fail_score = 0
+nc_score = 0
 
 check_login = True
 main_menu = True
@@ -158,6 +170,9 @@ while main_menu :
             print('Logout')
             user = ''
             score = 0
+            total_score = 0
+            fail_score = 0
+            nc_score = 0
             check_login = True
         else :
             print("Incorrect Menu !! Pleasse Try Again ")

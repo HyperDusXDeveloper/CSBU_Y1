@@ -1,5 +1,6 @@
-Mementowww 123456 6
-Mekin 1234 30
-Atommic 123 0
-aton 12 0
-Atom 122 18
+Mementowww 123456 0 0 0 0
+Mekin 1234 18 20 1 19
+Atommic 123 0 0 0 0
+aton 12 0 0 0 0
+Atom 122 0 0 0 0
+Great 123 4 10 3 7
