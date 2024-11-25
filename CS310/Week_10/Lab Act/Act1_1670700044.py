@@ -1,7 +1,8 @@
-with open("data/score.txt" , "r") as file1 : #input
-    with open("data/report.txt" , "w") as file2 : #output
+with open("Week_10/Lab Act/data/score.txt" , "r") as file1 : #input
+    with open("Week_10/Lab Act/data/report.txt" , "w") as file2 : #output
         # data = file1.readlines()
-        data = file1.read() .splitlines()
+        data = file1.read() 
+        print(data)
         for line in data :
             item = line.split(", ")
             # print(item)

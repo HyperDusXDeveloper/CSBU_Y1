@@ -1,0 +1,6 @@
+1001 Panee  50 20 10  P6 
+1002 Suwit   30 20 10 P5 
+1003 Ratchata 30 5 12 P6 
+1004 Peerada  20 10 40 P5 
+1005 Taweep   10 20 20 P5 
+1006 Kunya    25 50 0 P3 
