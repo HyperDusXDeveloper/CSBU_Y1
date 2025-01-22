@@ -1,0 +1,100 @@
+mango:A tropical fruit with a juicy and sweet taste.:Fruit
+apple:A popular fruit with a sweet taste and crisp texture.:Fruit
+mango:A tropical fruit with a juicy and sweet taste.:Fruit
+chair:A piece of furniture for sitting.:Object
+strawberry:A red fruit with seeds on the outside.:Fruit
+cherry:A small red fruit often found on cakes.:Fruit
+lion:Known as the king of the jungle.:Animal
+window:An opening in a wall to let in light and air.:Object
+clock:An instrument to measure and show time.:Object
+computer:An electronic device for processing data.:Object
+dog:A loyal pet that barks.:Animal
+peach:A soft fruit with fuzzy skin and sweet taste.:Fruit
+mango:A tropical fruit with a juicy and sweet taste.:Fruit
+door:A movable barrier used to close an entrance.:Object
+table:A flat surface supported by legs, used for dining or work.:Object
+blueberry:A small blue fruit often used in muffins.:Fruit
+cherry:A small red fruit often found on cakes.:Fruit
+mango:A tropical fruit with a juicy and sweet taste.:Fruit
+door:A movable barrier used to close an entrance.:Object
+table:A flat surface supported by legs, used for dining or work.:Object
+pen:An instrument for writing with ink.:Object
+pear:A sweet fruit with a unique shape and soft texture.:Fruit
+pen:An instrument for writing with ink.:Object
+blueberry:A small blue fruit often used in muffins.:Fruit
+phone:A portable device used for communication.:Object
+phone:A portable device used for communication.:Object
+tiger:A big cat with orange fur and black stripes.:Animal
+chair:A piece of furniture for sitting.:Object
+giraffe:The tallest land animal with a long neck.:Animal
+clock:An instrument to measure and show time.:Object
+giraffe:The tallest land animal with a long neck.:Animal
+cherry:A small red fruit often found on cakes.:Fruit
+monkey:An animal known for climbing trees and eating bananas.:Animal
+grape:It has a small size and a sweet flavor.:Fruit
+orange:A citrus fruit known for its refreshing juice.:Fruit
+window:An opening in a wall to let in light and air.:Object
+peach:A soft fruit with fuzzy skin and sweet taste.:Fruit
+strawberry:A red fruit with seeds on the outside.:Fruit
+computer:An electronic device for processing data.:Object
+giraffe:The tallest land animal with a long neck.:Animal
+apple:A popular fruit with a sweet taste and crisp texture.:Fruit
+blueberry:A small blue fruit often used in muffins.:Fruit
+computer:An electronic device for processing data.:Object
+lamp:An object that provides light.:Object
+chair:A piece of furniture for sitting.:Object
+lion:Known as the king of the jungle.:Animal
+pear:A sweet fruit with a unique shape and soft texture.:Fruit
+pear:A sweet fruit with a unique shape and soft texture.:Fruit
+banana:A yellow fruit that monkeys love.:Fruit
+keyboard:An input device used to type text.:Object
+grape:It has a small size and a sweet flavor.:Fruit
+peach:A soft fruit with fuzzy skin and sweet taste.:Fruit
+dog:A loyal pet that barks.:Animal
+bear:A large mammal that can be found in forests and mountains.:Animal
+chair:A piece of furniture for sitting.:Object
+pen:An instrument for writing with ink.:Object
+grape:It has a small size and a sweet flavor.:Fruit
+lion:Known as the king of the jungle.:Animal
+window:An opening in a wall to let in light and air.:Object
+pen:An instrument for writing with ink.:Object
+phone:A portable device used for communication.:Object
+table:A flat surface supported by legs, used for dining or work.:Object
+blueberry:A small blue fruit often used in muffins.:Fruit
+zebra:A horse-like animal with black and white stripes.:Animal
+orange:A citrus fruit known for its refreshing juice.:Fruit
+lion:Known as the king of the jungle.:Animal
+pear:A sweet fruit with a unique shape and soft texture.:Fruit
+window:An opening in a wall to let in light and air.:Object
+banana:A yellow fruit that monkeys love.:Fruit
+cat:A domestic animal that purrs.:Animal
+dog:A loyal pet that barks.:Animal
+chair:A piece of furniture for sitting.:Object
+door:A movable barrier used to close an entrance.:Object
+apple:A popular fruit with a sweet taste and crisp texture.:Fruit
+grape:It has a small size and a sweet flavor.:Fruit
+pear:A sweet fruit with a unique shape and soft texture.:Fruit
+lion:Known as the king of the jungle.:Animal
+lion:Known as the king of the jungle.:Animal
+wolf:A wild animal that is the ancestor of the domestic dog.:Animal
+table:A flat surface supported by legs, used for dining or work.:Object
+lion:Known as the king of the jungle.:Animal
+strawberry:A red fruit with seeds on the outside.:Fruit
+giraffe:The tallest land animal with a long neck.:Animal
+dog:A loyal pet that barks.:Animal
+pen:An instrument for writing with ink.:Object
+monkey:An animal known for climbing trees and eating bananas.:Animal
+monkey:An animal known for climbing trees and eating bananas.:Animal
+phone:A portable device used for communication.:Object
+elephant:The largest land animal with a trunk.:Animal
+table:A flat surface supported by legs, used for dining or work.:Object
+cherry:A small red fruit often found on cakes.:Fruit
+apple:A popular fruit with a sweet taste and crisp texture.:Fruit
+dog:A loyal pet that barks.:Animal
+pen:An instrument for writing with ink.:Object
+lamp:An object that provides light.:Object
+blueberry:A small blue fruit often used in muffins.:Fruit
+chair:A piece of furniture for sitting.:Object
+dog:A loyal pet that barks.:Animal
+cherry:A small red fruit often found on cakes.:Fruit
+grape:It has a small size and a sweet flavor.:Fruit

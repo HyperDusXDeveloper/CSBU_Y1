@@ -1,0 +1,100 @@
+dog:A loyal pet that barks.:Animal
+mango:A tropical fruit with a juicy and sweet taste.:Fruit
+mango:A tropical fruit with a juicy and sweet taste.:Fruit
+peach:A soft fruit with fuzzy skin and sweet taste.:Fruit
+giraffe:The tallest land animal with a long neck.:Animal
+window:An opening in a wall to let in light and air.:Object
+strawberry:A red fruit with seeds on the outside.:Fruit
+clock:An instrument to measure and show time.:Object
+chair:A piece of furniture for sitting.:Object
+lion:Known as the king of the jungle.:Animal
+lamp:An object that provides light.:Object
+elephant:The largest land animal with a trunk.:Animal
+grape:It has a small size and a sweet flavor.:Fruit
+lamp:An object that provides light.:Object
+tiger:A big cat with orange fur and black stripes.:Animal
+lion:Known as the king of the jungle.:Animal
+orange:A citrus fruit known for its refreshing juice.:Fruit
+table:A flat surface supported by legs, used for dining or work.:Object
+lamp:An object that provides light.:Object
+door:A movable barrier used to close an entrance.:Object
+keyboard:An input device used to type text.:Object
+door:A movable barrier used to close an entrance.:Object
+elephant:The largest land animal with a trunk.:Animal
+pear:A sweet fruit with a unique shape and soft texture.:Fruit
+lion:Known as the king of the jungle.:Animal
+table:A flat surface supported by legs, used for dining or work.:Object
+dog:A loyal pet that barks.:Animal
+wolf:A wild animal that is the ancestor of the domestic dog.:Animal
+keyboard:An input device used to type text.:Object
+zebra:A horse-like animal with black and white stripes.:Animal
+clock:An instrument to measure and show time.:Object
+pen:An instrument for writing with ink.:Object
+table:A flat surface supported by legs, used for dining or work.:Object
+elephant:The largest land animal with a trunk.:Animal
+chair:A piece of furniture for sitting.:Object
+giraffe:The tallest land animal with a long neck.:Animal
+tiger:A big cat with orange fur and black stripes.:Animal
+strawberry:A red fruit with seeds on the outside.:Fruit
+zebra:A horse-like animal with black and white stripes.:Animal
+banana:A yellow fruit that monkeys love.:Fruit
+zebra:A horse-like animal with black and white stripes.:Animal
+window:An opening in a wall to let in light and air.:Object
+mango:A tropical fruit with a juicy and sweet taste.:Fruit
+zebra:A horse-like animal with black and white stripes.:Animal
+cat:A domestic animal that purrs.:Animal
+pen:An instrument for writing with ink.:Object
+monkey:An animal known for climbing trees and eating bananas.:Animal
+mango:A tropical fruit with a juicy and sweet taste.:Fruit
+grape:It has a small size and a sweet flavor.:Fruit
+bear:A large mammal that can be found in forests and mountains.:Animal
+door:A movable barrier used to close an entrance.:Object
+banana:A yellow fruit that monkeys love.:Fruit
+table:A flat surface supported by legs, used for dining or work.:Object
+window:An opening in a wall to let in light and air.:Object
+elephant:The largest land animal with a trunk.:Animal
+chair:A piece of furniture for sitting.:Object
+grape:It has a small size and a sweet flavor.:Fruit
+clock:An instrument to measure and show time.:Object
+clock:An instrument to measure and show time.:Object
+peach:A soft fruit with fuzzy skin and sweet taste.:Fruit
+cherry:A small red fruit often found on cakes.:Fruit
+peach:A soft fruit with fuzzy skin and sweet taste.:Fruit
+chair:A piece of furniture for sitting.:Object
+pear:A sweet fruit with a unique shape and soft texture.:Fruit
+pear:A sweet fruit with a unique shape and soft texture.:Fruit
+monkey:An animal known for climbing trees and eating bananas.:Animal
+strawberry:A red fruit with seeds on the outside.:Fruit
+cherry:A small red fruit often found on cakes.:Fruit
+cherry:A small red fruit often found on cakes.:Fruit
+blueberry:A small blue fruit often used in muffins.:Fruit
+window:An opening in a wall to let in light and air.:Object
+lamp:An object that provides light.:Object
+strawberry:A red fruit with seeds on the outside.:Fruit
+bear:A large mammal that can be found in forests and mountains.:Animal
+door:A movable barrier used to close an entrance.:Object
+clock:An instrument to measure and show time.:Object
+chair:A piece of furniture for sitting.:Object
+clock:An instrument to measure and show time.:Object
+phone:A portable device used for communication.:Object
+window:An opening in a wall to let in light and air.:Object
+blueberry:A small blue fruit often used in muffins.:Fruit
+door:A movable barrier used to close an entrance.:Object
+strawberry:A red fruit with seeds on the outside.:Fruit
+clock:An instrument to measure and show time.:Object
+window:An opening in a wall to let in light and air.:Object
+pen:An instrument for writing with ink.:Object
+zebra:A horse-like animal with black and white stripes.:Animal
+zebra:A horse-like animal with black and white stripes.:Animal
+pear:A sweet fruit with a unique shape and soft texture.:Fruit
+mango:A tropical fruit with a juicy and sweet taste.:Fruit
+lion:Known as the king of the jungle.:Animal
+clock:An instrument to measure and show time.:Object
+blueberry:A small blue fruit often used in muffins.:Fruit
+keyboard:An input device used to type text.:Object
+monkey:An animal known for climbing trees and eating bananas.:Animal
+clock:An instrument to measure and show time.:Object
+clock:An instrument to measure and show time.:Object
+lion:Known as the king of the jungle.:Animal
+giraffe:The tallest land animal with a long neck.:Animal
+giraffe:The tallest land animal with a long neck.:Animal

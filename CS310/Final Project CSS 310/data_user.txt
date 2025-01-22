@@ -1,0 +1,5 @@
+HyperDusX 1234 25 55 15 40
+Mekin 1234 44 96 26 70
+Sirinthorn 8888 80 100 10 90
+Atommic 6654 35 67 19 56
+Great 1126 -29 35 32 3
