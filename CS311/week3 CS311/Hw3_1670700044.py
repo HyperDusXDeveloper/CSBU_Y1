@@ -16,12 +16,14 @@ def layout(master): #
 
 
     left = Frame(master,bg='#FFA09B')
-    left.grid(row=1,column=0,sticky='news')
+    left.grid(row=1,column=0,sticky='news',padx=10 , pady=15)
     left.grid_rowconfigure((0,1),weight=1)
     left.grid_columnconfigure((0,1),weight=1)
 
     right = Frame(master,bg='#EFB036')  
-    right.grid(row=1,column=1,sticky='news',) #padx=10 , pady=15
+    right.grid(row=1,column=1,sticky='news',padx=10 , pady=15) 
+    right.grid_rowconfigure((0,1),weight=1)
+    right.grid_columnconfigure((0,1),weight=1)
 
     bottom = Frame(master,bg='#26355D')
     bottom.grid(row=2,columnspan=2,sticky='news')
@@ -46,19 +48,20 @@ def widgets(top,left,right,bottom) :
 
     #RIGHT
     widgetsRightIMG1 = Label(right,image=skill,bg='white')
-    widgetsRightIMG1.grid(row=0,column=0)
+    widgetsRightIMG1.grid(row=0,columnspan=3)
 
-    #Bottom
-    btn1 = Button(bottom,text="Click Me 1",width=15,)
+    #Botton
+    # bottom.option_add('*font','Garamond 20')
+    btn1 = Button(bottom,text="Click Me 1",font=('comic sans ms',15,'bold'))
     btn1.grid(row=0,column=0)
     
-    btn2 = Button(bottom,text="Click Me 2",width=15)
+    btn2 = Button(bottom,text="Click Me 2",width=15,font=('comic sans ms',15,'bold'))
     btn2.grid(row=0,column=1)
 
-    btn3 = Button(bottom,text="Click Me 3",width=15)
+    btn3 = Button(bottom,text="Click Me 3",width=15,font=('comic sans ms',15,'bold'))
     btn3.grid(row=0,column=2)
     
-    btn4 = Button(bottom,text="Exit Program",width=15,command=exit)
+    btn4 = Button(bottom,text="Exit Program",width=15,font=('comic sans ms',15,'bold'),command=exit)
     btn4.grid(row=0,column=3)
 
 master = createwindow()
