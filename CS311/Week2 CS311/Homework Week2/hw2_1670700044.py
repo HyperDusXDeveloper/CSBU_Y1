@@ -48,6 +48,7 @@ def widget(master) :
     # Created
     lower = Label(master,text="Created By Natchanon Saileamonpiwat ,ID = 1670700044 ",font=('Comic Sans MS',12,'bold'),bg="#006BFF",fg='#EFB036')
     lower.grid(row=6,columnspan=2,ipady=10)
+    
 master = mainwindow()
 widget(master)
 master.mainloop()
