@@ -21,7 +21,7 @@ def layout(master):
 
 
     left = Frame(master,bg='#D1F4F4')
-    left.grid(row=1,column=0,sticky='news',padx=10 , pady=15)
+    left.grid(row=1,column=0,sticky='news',)
     left.grid_rowconfigure(0,weight=2)
     left.grid_rowconfigure(1,weight=3)
     left.grid_rowconfigure(2,weight=1)
@@ -49,10 +49,8 @@ def widgets(top,left,right,bottom) :
     #LEFT
     widgetsLeftIMG1 = Label(left,image=Profile,bg='#D1F4F4',fg='Black')
     widgetsLeftIMG1.grid(row=0,column=0)
-
     leftname = Label(left,text="Name : Natchanon Saileamonpiwat \nCollegian \nInformation Technology and Innovation",fg='Black',font=('Arial',15,'bold'),bg="#D1F4F4",justify='left')#.place(x=350,y=120)
     leftname.grid(row=0,column=1)
-
     widgetsLeftIMG2 = Label(left,image=barcolor,bg='white')
     widgetsLeftIMG2.grid(rowspan=3,columnspan=2)
 
@@ -63,13 +61,10 @@ def widgets(top,left,right,bottom) :
     #BOTTOM
     btn1 = Button(bottom,text="Click Me 1",font=('Arial',15,'bold'))
     btn1.grid(row=0,column=0,ipadx=50,ipady=15,padx=5,pady=5)
-    
     btn2 = Button(bottom,text="Click Me 2",width=15,font=('Arial',15,'bold'))
     btn2.grid(row=0,column=1,ipadx=10,ipady=15,padx=5,pady=5)
-
     btn3 = Button(bottom,text="Click Me 3",width=15,font=('Arial',15,'bold'))
     btn3.grid(row=0,column=2,ipadx=15,ipady=15,padx=5,pady=5)
-    
     btn4 = Button(bottom,text="Exit Program",width=15,font=('Arial',15,'bold'),command=exit)
     btn4.grid(row=0,column=3,ipadx=15,ipady=15,padx=5,pady=5)
 

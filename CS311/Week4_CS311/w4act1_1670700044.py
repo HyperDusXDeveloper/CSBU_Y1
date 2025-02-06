@@ -58,9 +58,9 @@ def userclick() :
     total['text'] = f"Total Price = {net:0.2f} Bath "
 #main
 master = createwindow()
-cake1 = PhotoImage(file="image/cake1.png")
-cake2 = PhotoImage(file='image/cake2.png')
-cake3 = PhotoImage(file="image/cake3.png")
+cake1 = PhotoImage(file="Week4_CS311/image/cake1.png")
+cake2 = PhotoImage(file='Week4_CS311/image/cake2.png')
+cake3 = PhotoImage(file="Week4_CS311/image/cake3.png")
 spy1 = IntVar()
 spy2 = IntVar()
 spy3 = IntVar()
