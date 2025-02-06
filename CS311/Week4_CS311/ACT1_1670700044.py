@@ -1,0 +1,43 @@
+from tkinter import *
+def createwindow() :
+    master = Tk()
+    master.wm_geometry('1000x800+300+100')
+    master.title('Art toy shop created by Natchanon Srileamonpiwat')
+    master.grid_columnconfigure((0,1),weight=1)
+    master.grid_rowconfigure((0,2),weight=1)
+    master.grid_rowconfigure(1,weight=5)
+    master.option_add('*font','Garamond 20')
+    return(master)
+ 
+def layout(master) :
+    top = Frame(master,bg="#C5BAFF")
+    top.grid(row=0,columnspan=2,sticky='news')
+    left = Frame(master,bg="#E8F9FF")
+    left.grid_rowconfigure((0,1,2),weight=1)
+    left.grid_columnconfigure(0,weight=1)
+    left.grid(row=1,column=0,sticky='news')
+    right = Frame(master,bg="#C4D9FF")
+    right.rowconfigure((0,1,2),weight=1)
+    right.grid_columnconfigure(0,weight=1)
+    right.grid(row=1,column=1,sticky='news')
+    bottom = Frame(master,bg="#C5BAFF")
+    bottom.columnconfigure((0,1),weight=1)
+    bottom.rowconfigure(0,weight=1)
+    bottom.grid(row=2,columnspan=2,sticky='news')
+    return(top,left,right,bottom)
+ 
+def widgets(top,left,right,bottom) :
+    order1 = Label(left,bg='#FCE7C8',image=cake1)
+    order1.grid(row=0,column=0,rowspan=2)
+    detail1 = Label(left,bg="#7CE7C8",text="Chocolate Cake")
+    detail1.grid(row=0,column=1,sticky=S)
+    amount1 = Spinbox(left,from_=0,to=100,justify='center')
+    amount1.grid(row=1,column=1,sticky=N)
+#main
+master = createwindow()
+cake1 = PhotoImage(file="image/cake1.png").subsample(3,3)
+cake2 = PhotoImage(file="image/cake2.png").subsample(3,3)
+cake3 = PhotoImage(file="image/cake3.png").subsample(3,3)
+top,left,right,bottom = layout(master)
+widgets(top,left,right,bottom)
+master.mainloop()
