@@ -5,7 +5,7 @@ def createwindow() :
     master = Tk()
     master.wm_geometry('1000x700+300+50')
     master.title("Homework of Week4 : Figure Shop by Natchanon Saileamonpiwat ")
-    master.option_add('*font',"Arital 20")
+    master.option_add('*font',"Arital 20 bold")
     master.grid_rowconfigure(0,weight=2)
     master.grid_rowconfigure(1,weight=5)
     master.grid_rowconfigure(2,weight=1)
