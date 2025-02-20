@@ -64,9 +64,11 @@ def userclick() :
     totaldrink = 0
     cakeprice = [125,110,140,100]
     drinkprice = [80,70,100,90]
+
     for i,item in enumerate(cakeprice) :
         totalcake += cakespy[i].get() * cakeprice[i]
         totaldrink += drinkspy[i].get() * drinkprice[i]
+        
     showcake['text'] = f'Total Price = {totalcake:0.2f} Bath'
     showcake['bg'] = "#854836"
     showcake['fg'] = "white"
