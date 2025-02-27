@@ -58,7 +58,7 @@ def checkoutclick() :
     checkoutframe.grid_columnconfigure(0,weight=1)
     checkoutframe.grid_rowconfigure((0,3),weight=2)
     checkoutframe.grid_rowconfigure((1,2),weight=1)
-    checkoutframe.grid(row=0,column=1,sticky='news')
+    checkoutframe.grid(row=0,rowspan=3,column=1,sticky='news')
 
     for i,productm in enumerate(price1) :
         #Cake / Drink " Price "

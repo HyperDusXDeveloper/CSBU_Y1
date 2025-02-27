@@ -65,8 +65,8 @@ def bmi(e) :
     lbBmi['bg'] = zone
 
 root = mainwindow()
-boy = PhotoImage(file="image/boy.png")
-girl = PhotoImage(file="image/girl.png")
+boy = PhotoImage(file='Week6 CS311\image\boy.png')
+girl = PhotoImage(file='Week6 CS311\image\girl.png')
 cal_bmi = StringVar()
 spy1 = toplayout(root)
 h,w,lbBmi = widget(root)

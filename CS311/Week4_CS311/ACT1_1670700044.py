@@ -35,9 +35,9 @@ def widgets(top,left,right,bottom) :
     amount1.grid(row=1,column=1,sticky=N)
 #main
 master = createwindow()
-cake1 = PhotoImage(file="image/cake1.png").subsample(3,3)
-cake2 = PhotoImage(file="image/cake2.png").subsample(3,3)
-cake3 = PhotoImage(file="image/cake3.png").subsample(3,3)
+cake1 = PhotoImage(file="Week4_CS311\image\cake1.png").subsample(3,3)
+cake2 = PhotoImage(file="Week4_CS311\image\cake2.png").subsample(3,3)
+cake3 = PhotoImage(file="Week4_CS311\image\cake3.png").subsample(3,3)
 top,left,right,bottom = layout(master)
 widgets(top,left,right,bottom)
 master.mainloop()
