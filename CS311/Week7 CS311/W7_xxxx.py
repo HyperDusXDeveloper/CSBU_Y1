@@ -27,11 +27,11 @@ def layout(master) :
 def topframe(top) :
     Label(top,bg='#AB886D',image=img1).grid(row=0,column=0,rowspan=2)
     Label(top,bg='#AB886D',image=img2).grid(row=0,column=2,rowspan=2)
-    Label(top,bg='#AB886D',text="Dream Cafe' Shop",font=('tahoma',28,'bold')).grid(row=0,column=1,sticky='s')
+    Label(top,bg='#AB886D',text="Dream Cafe CumPee' Shop",font=('tahoma',28,'bold')).grid(row=0,column=1,sticky='s')
     Label(top,bg='#AB886D',text="Customers Like our family").grid(row=1,column=1,sticky='n')
 
 def bottomframe(bottom) :
-    Button(bottom,text='Reset All '  ,width=15,command=resetclick).grid(row=0,column=0,sticky=E,padx=5,ipady=10)
+    Button(bottom,text='Exit Program '  ,width=15,command=resetclick).grid(row=0,column=0,sticky=E,padx=5,ipady=10)
     Button(bottom,text='Check Out ' ,width=15,command=checkout).grid(row=0,column=1,sticky=W,padx=5,ipady=10)
 
 def centerframe(center) :
