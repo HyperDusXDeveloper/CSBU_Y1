@@ -153,8 +153,6 @@ price3 = [110,160,50]
 cakespy = [IntVar() for x in price1]
 drinkspy = [IntVar() for x in price2]
 coffeespy = [IntVar() for x in price3]
-img6 = PhotoImage(file='Lerning/image/cake1.png')
-img7 = PhotoImage(file='Lerning/image/drink1.png')
 layout(master)
 topframe(top)
 bottomframe(bottom)
