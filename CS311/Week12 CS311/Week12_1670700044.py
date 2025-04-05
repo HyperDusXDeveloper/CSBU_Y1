@@ -292,7 +292,7 @@ root.mainloop()
 # cursor.close()
 # conn.close()
 
-
+# DATABASE CODE
 # update login
 # set user="Pond1",pwd="pwd000",fname="Natchanon",lname="Saileamonpiwat1"
 # where user="admin1" ;
