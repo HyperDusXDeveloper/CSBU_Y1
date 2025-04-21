@@ -1,0 +1,28 @@
+insert ข้อมูล
+    insert into student values (1670700044,'Natchanon','Saileamonpiwat','male',1,'pond1','pond1')
+
+add ข้อมูล ลง Database 
+def addcourse() :
+    if codebox.get() == "" or namebox.get() == "" or daybox.get() == "" or roombox.get() == "" :
+        messagebox.showwarning("Admin: ","Please fullfill all of course data")
+        codebox.focus_force()
+    else : 
+        #define sql select command of course code or course name for duplicating
+        sql = "select * from course where course_code=? or course_name=?" #เช็คค่าที่ดึงมาว่าซ้ำไหม
+        #execute step
+        cursor.execute(sql,[codebox.get(),namebox.get()]) #หาค่าใน Database 
+        #fetch result
+        result = cursor.fetchone()
+        if result :
+            messagebox.showwarning("Admin: ","Course code or name already exist.") #ถ้าเจอซ้ำให้ขึ้นเตือน
+            codebox.select_range(0,END)
+            codebox.focus_force()
+        else :
+            #define insert command for insert a new record into the table
+            sql = "insert into course values (NULL,?,?,?,?)" #บันทึกข้อมูลลง Database  
+            #execute step
+            cursor.execute(sql,[codebox.get(),namebox.get(),daybox.get(),roombox.get()])
+            #commit step
+            conn.commit()
+            messagebox.showinfo("Admin:","Add course successfully")
+            clearclick()
