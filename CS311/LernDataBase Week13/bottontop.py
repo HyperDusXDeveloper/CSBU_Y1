@@ -25,6 +25,7 @@ def mainwindow() :
     return root
 
 def loginlayout() :
+    ############################################### Window Update Login ################################################
     global userentry,pwdentry
     loginframe.rowconfigure((0,1,2,3),weight=1)
     loginframe.columnconfigure((0,1),weight=1)
@@ -36,6 +37,9 @@ def loginlayout() :
     pwdentry = Entry(loginframe,bg='#e4fbff',width=20,show='*')
     pwdentry.grid(row=2,column=1,sticky='w',padx=20)
     Label(loginframe,text="Password  : ",bg='#8fd9a8',fg='#e4fbff',padx=20).grid(row=2,column=0,sticky='e')
+
+    #Label(loginframe,text="Student ID  : ",bg='#8fd9a8',fg='#e4fbff',padx=20).grid(row=3,column=0,sticky='e')
+
     Button(loginframe,text="Login",width=10,command=lambda:loginclick(userentry.get(),pwdentry.get())).grid(row=3,column=1,pady=20,ipady=15,sticky='e',padx=40)
     Button(loginframe,text="Exit",width=10,command=root.quit).grid(row=3,column=0,pady=10,ipady=15,sticky='w',padx=45)
 
@@ -71,7 +75,6 @@ def welcomepage(result) :
     pwdframe.grid_forget()
     updateframe.grid_forget()
     welcomeframe['bg'] = "#FCC2FC"
-    
     #ROW
     welcomeframe.grid_rowconfigure((0),weight=1)
     welcomeframe.grid_rowconfigure((1),weight=5)
@@ -118,12 +121,15 @@ def welcomepage(result) :
 def addclick() :
     global addframe
     global codebox,namebox,daybox,roombox
+
     right.grid_forget()
     updateframe.grid_forget()
     deleteframe.grid_forget()
+
     addframe.grid_rowconfigure((0,1,2,3,4,5),weight=1)
     addframe.grid_columnconfigure((0,1),weight=1)
     addframe.grid(row=1,column=1,sticky='news')
+
     Label(addframe,text="Add Course",font="Garamond 26 bold",image=img5,compound=LEFT,bg='#9EC6F3').grid(row=0,columnspan=2)
     Label(addframe,text="Course Code : ",bg='#9EC6F3').grid(row=1,column=0,sticky='e')
     codebox = Entry(addframe,bg="#DAF5FF")
@@ -138,9 +144,11 @@ def addclick() :
     roombox = Entry(addframe,bg="#DAF5FF")
     roombox.grid(row=4,column=1,sticky='w',padx=20)
     Button(addframe,text="Add",width=10,command=addcourse).grid(row=5,columnspan=2,ipady=10)
+    
+ ###############################################เปลี่ยนข้อมูลตัวแปร################################################
 
 def addcourse() :
-    if codebox.get() == "" or namebox.get() == "" or daybox.get() == "" or roombox.get() == "" :
+    if codebox.get() == "" or namebox.get() == "" or daybox.get() == "" or roombox.get() == "" : 
         messagebox.showwarning("Admin: ","Please fullfill all of course data")
         codebox.focus_force()
     else : 
@@ -165,16 +173,16 @@ def addcourse() :
             clearclick()
 
 def searchclick() :
-    sql = "select * from course where course_code=? collate nocase" #ค้นหาข้อมูลใน Database 
+    sql = "select * from course where course_code=? collate nocase" #ค้นหาข้อมูลใน Database เปลี่ยนตัวแปรทั้งหมด
     #execute step
     cursor.execute(sql,[searchbox.get()]) 
     #fetch result
     result = cursor.fetchone()
     if result :
-        codebox.config(state='normal')
+        codebox.config(state='normal') #อ่านเท่านั้น insert ข้อมูลก่อน
         codebox.delete(0,END)
         codebox.insert(0,result[1])
-        codebox.config(state='readonly')
+        codebox.config(state='readonly') #เพิ่มข้อมูลแล้วห้ามแก้ไขต่อ
         namebox.delete(0,END)
         namebox.insert(0,result[2])
         daybox.delete(0,END)
@@ -198,9 +206,7 @@ def updateclick() :
     deleteframe.grid_forget()
     updateframe.grid_rowconfigure((0,1,2,3,4,5,6),weight=1)
     updateframe.grid_columnconfigure((0,1),weight=1)
-
     updateframe.grid(row=1,column=1,sticky='news')
-
     Label(updateframe,text="Update Course",font="Garamond 26 bold",image=img5,compound=LEFT,bg='#9EC6F3').grid(row=0,columnspan=2)
     Label(updateframe,text="Course Code : ",bg='#9EC6F3').grid(row=1,column=0,sticky='e')
     searchbox = Entry(updateframe,bg="#DAF5FF")
