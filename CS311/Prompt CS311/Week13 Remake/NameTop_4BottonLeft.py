@@ -70,7 +70,7 @@ def loginclick(user,pwd) :
 
 
 def welcomepage(result) :
-    global center,bottontop,bottom
+    global top,left,right,bottom
     loginframe.grid_forget()
     pwdframe.grid_forget()
     updateframe.grid_forget()
@@ -83,47 +83,51 @@ def welcomepage(result) :
     #COLUMN
     welcomeframe.grid_columnconfigure((0),weight=1)
     welcomeframe.grid_columnconfigure((1),weight=5)
-
     #Frame
     welcomeframe.grid(row=0,column=0,columnspan=4,rowspan=4,sticky='news')
 
     #TOP FRAME
-    bottom = Frame(welcomeframe,bg='#FFF1D5')
-    bottom.grid_rowconfigure((0,1),weight=1)
-    bottom.grid_columnconfigure(0,weight=1)
-    bottom.grid(row=2,columnspan=2,sticky='news')
+    top = Frame(welcomeframe,bg='#FFF1D5')
+    top.grid_rowconfigure((0,1),weight=1)
+    top.grid_columnconfigure(0,weight=1)
+    top.grid(row=0,columnspan=2,sticky='news')
 
     #LEFT
-    bottontop = Frame(welcomeframe,bg='#BDDDE4')
-    bottontop.grid_rowconfigure(0,weight=1)
-    bottontop.grid_columnconfigure((0,1,2,3),weight=1)
-    bottontop.grid(row=0,column=0,columnspan=2,sticky='news')
-    
+    left = Frame(welcomeframe,bg='#BDDDE4')
+    left.grid_rowconfigure((0,1,2,3),weight=1)
+    left.grid_rowconfigure((4),weight=3)
+    left.grid_columnconfigure(0,weight=1)
+    left.grid(row=1,column=0,sticky='news')
+
     #RIGHT
-    center = Frame(welcomeframe,bg='#9EC6F3')
-    center.grid_rowconfigure((0),weight=1)
-    center.grid_columnconfigure(0,weight=1)
-    center.grid(row=1,column=0,columnspan=2,sticky='news')
+    right = Frame(welcomeframe,bg='#9EC6F3')
+    right.grid_rowconfigure((0),weight=1)
+    right.grid_columnconfigure(0,weight=1)
+    right.grid(row=1,column=1,sticky='news')
+
+    #BOTTOM
+    bottom = Frame(welcomeframe,bg='#FFF1D5')
+    bottom.grid(row=2,columnspan=2,sticky='news')
 
     #create widgets
-    Label(bottom,image=img1,bg='#FFF1D5',text="Student ID : "+str(result[0])+"\n"+"Name : "+result[1]+" "+result[2],compound=LEFT).grid(row=0)
-    Button(bottontop,text="Add Course",width=10,command=addclick).grid(row=0,column=0,ipady=10)
-    Button(bottontop,text="Update Course",width=10,command=updateclick).grid(row=0,column=1,ipady=10)
-    Button(bottontop,text="Delete Course",width=10,command=deleteclick).grid(row=0,column=2,ipady=10)
-    Button(bottontop,text="Logout",width=10,command=logoutclick).grid(row=0,column=3,ipady=10)
-    Label(center,image=img4,bg='#BDDDE4').grid(row=0,column=0)
+    Label(top,image=img1,bg='#FFF1D5',text="Student ID : "+str(result[0])+"\n"+"Name : "+result[1]+" "+result[2],compound=LEFT).grid(row=0)
+    Button(left,text="Add Course",width=10,command=addclick).grid(row=1,ipady=10)
+    Button(left,text="Update Course",width=10,command=updateclick).grid(row=2,ipady=10)
+    Button(left,text="Delete Course",width=10,command=deleteclick).grid(row=3,ipady=10)
+    Button(left,text="Logout",width=10,command=logoutclick).grid(row=4,ipady=10)
+    Label(right,image=img4,bg='#BDDDE4').grid(row=0)
 
 def addclick() :
     global addframe
     global codebox,namebox,daybox,roombox
 
-    center.grid_forget()
+    right.grid_forget()
     updateframe.grid_forget()
     deleteframe.grid_forget()
 
     addframe.grid_rowconfigure((0,1,2,3,4,5),weight=1)
     addframe.grid_columnconfigure((0,1),weight=1)
-    addframe.grid(row=1,column=0,columnspan=2,sticky='news')
+    addframe.grid(row=1,column=1,sticky='news')
 
     Label(addframe,text="Add Course",font="Garamond 26 bold",image=img5,compound=LEFT,bg='#9EC6F3').grid(row=0,columnspan=2)
     Label(addframe,text="Course Code : ",bg='#9EC6F3').grid(row=1,column=0,sticky='e')
@@ -196,12 +200,12 @@ def searchclick() :
  
 def updateclick() :
     global searchbox,codebox,namebox,daybox,roombox
-    center.grid_forget()
+    right.grid_forget()
     addframe.grid_forget()
     deleteframe.grid_forget()
     updateframe.grid_rowconfigure((0,1,2,3,4,5,6),weight=1)
     updateframe.grid_columnconfigure((0,1),weight=1)
-    updateframe.grid(row=1,column=0,columnspan=2,sticky='news')
+    updateframe.grid(row=1,column=1,sticky='news')
     Label(updateframe,text="Update Course",font="Garamond 26 bold",image=img5,compound=LEFT,bg='#9EC6F3').grid(row=0,columnspan=2)
     Label(updateframe,text="Course Code : ",bg='#9EC6F3').grid(row=1,column=0,sticky='e')
     searchbox = Entry(updateframe,bg="#DAF5FF")
@@ -279,10 +283,10 @@ def deleteclick() :
     global searchbox,codebox,namebox,daybox,roombox
     updateframe.grid_forget()
     addframe.grid_forget()
-    center.grid_forget()
+    right.grid_forget()
     deleteframe.grid_rowconfigure((0,1,2,3,4,5),weight=1)
     deleteframe.grid_columnconfigure((0,1),weight=1)
-    deleteframe.grid(row=1,column=0,columnspan=2,sticky='news')
+    deleteframe.grid(row=1,column=1,sticky='news')
     Label(deleteframe,text="Delete Course",font="Garamond 26 bold",image=img5,compound=LEFT,bg='#9EC6F3').grid(row=0,columnspan=2)
     Label(deleteframe,text="Course Code : ",bg='#9EC6F3').grid(row=1,column=0,sticky='e')
     searchbox = Entry(deleteframe,bg="#DAF5FF")
@@ -326,19 +330,16 @@ def clearclick() :
     roombox.delete(0,END)
        
 def logoutclick() :
-    cf = messagebox.askquestion("Admin : ","Confirm to Logout (Yes/No)")
-    if cf == 'yes' :
-        messagebox.showinfo("Admin : ","Back To Login ")
-        updateframe.grid_forget()
-        addframe.grid_forget()
-        deleteframe.grid_forget()
-        bottom.grid_forget()
-        center.grid_forget()
-        center.grid_forget()
-        bottontop.grid_forget()
-        welcomeframe.grid_forget()
-        pwdframe.grid_forget()
-        loginlayout() 
+    updateframe.grid_forget()
+    addframe.grid_forget()
+    deleteframe.grid_forget()
+    right.grid_forget()
+    top.grid_forget()
+    bottom.grid_forget()
+    left.grid_forget()
+    welcomeframe.grid_forget()
+    pwdframe.grid_forget()
+    loginlayout() 
 
 connection()
 root = mainwindow()

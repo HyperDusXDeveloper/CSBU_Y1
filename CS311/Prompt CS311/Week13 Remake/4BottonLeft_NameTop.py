@@ -16,7 +16,7 @@ def mainwindow() :
     y = root.winfo_screenheight()/2 - h/2
     root.geometry("%dx%d+%d+%d"%(w,h,x,y))
     root.config(bg='#28b5b5')
-    root.title("Week13 Insert/Update/Delete Application: ")
+    root.title("Week14 Insert/Update/Delete Application: ")
     root.option_add('*font',"Garamond 24 bold")
     root.rowconfigure((0,3),weight=1)
     root.rowconfigure((1,2),weight=2)
@@ -25,6 +25,7 @@ def mainwindow() :
     return root
 
 def loginlayout() :
+    ############################################### Window Update Login ################################################
     global userentry,pwdentry
     loginframe.rowconfigure((0,1,2,3),weight=1)
     loginframe.columnconfigure((0,1),weight=1)
@@ -36,6 +37,9 @@ def loginlayout() :
     pwdentry = Entry(loginframe,bg='#e4fbff',width=20,show='*')
     pwdentry.grid(row=2,column=1,sticky='w',padx=20)
     Label(loginframe,text="Password  : ",bg='#8fd9a8',fg='#e4fbff',padx=20).grid(row=2,column=0,sticky='e')
+
+    #Label(loginframe,text="Student ID  : ",bg='#8fd9a8',fg='#e4fbff',padx=20).grid(row=3,column=0,sticky='e')
+
     Button(loginframe,text="Login",width=10,command=lambda:loginclick(userentry.get(),pwdentry.get())).grid(row=3,column=1,pady=20,ipady=15,sticky='e',padx=40)
     Button(loginframe,text="Exit",width=10,command=root.quit).grid(row=3,column=0,pady=10,ipady=15,sticky='w',padx=45)
 
@@ -71,31 +75,41 @@ def welcomepage(result) :
     pwdframe.grid_forget()
     updateframe.grid_forget()
     welcomeframe['bg'] = "#FCC2FC"
+    #ROW
     welcomeframe.grid_rowconfigure((0),weight=1)
     welcomeframe.grid_rowconfigure((1),weight=5)
     welcomeframe.grid_rowconfigure((2),weight=1)
+
+    #COLUMN
     welcomeframe.grid_columnconfigure((0),weight=1)
     welcomeframe.grid_columnconfigure((1),weight=5)
+
+    #Frame
     welcomeframe.grid(row=0,column=0,columnspan=4,rowspan=4,sticky='news')
-    
+
+    #TOP FRAME
     top = Frame(welcomeframe,bg='#FFF1D5')
     top.grid_rowconfigure((0,1),weight=1)
     top.grid_columnconfigure(0,weight=1)
     top.grid(row=0,columnspan=2,sticky='news')
 
+    #LEFT
     left = Frame(welcomeframe,bg='#BDDDE4')
     left.grid_rowconfigure((0,1,2,3),weight=1)
     left.grid_rowconfigure((4),weight=3)
     left.grid_columnconfigure(0,weight=1)
-    left.grid(row=1,column=1,sticky='news')
+    left.grid(row=1,column=0,sticky='news')
 
+    #RIGHT
     right = Frame(welcomeframe,bg='#9EC6F3')
     right.grid_rowconfigure((0),weight=1)
     right.grid_columnconfigure(0,weight=1)
-    right.grid(row=1,column=0,sticky='news')
+    right.grid(row=1,column=1,sticky='news')
 
+    #BOTTOM
     bottom = Frame(welcomeframe,bg='#FFF1D5')
     bottom.grid(row=2,columnspan=2,sticky='news')
+
     #create widgets
     Label(top,image=img1,bg='#FFF1D5',text="Student ID : "+str(result[0])+"\n"+"Name : "+result[1]+" "+result[2],compound=LEFT).grid(row=0)
     Button(left,text="Add Course",width=10,command=addclick).grid(row=1,ipady=10)
@@ -107,12 +121,15 @@ def welcomepage(result) :
 def addclick() :
     global addframe
     global codebox,namebox,daybox,roombox
+
     right.grid_forget()
     updateframe.grid_forget()
     deleteframe.grid_forget()
+
     addframe.grid_rowconfigure((0,1,2,3,4,5),weight=1)
     addframe.grid_columnconfigure((0,1),weight=1)
-    addframe.grid(row=1,column=0,sticky='news')
+    addframe.grid(row=1,column=1,sticky='news')
+
     Label(addframe,text="Add Course",font="Garamond 26 bold",image=img5,compound=LEFT,bg='#9EC6F3').grid(row=0,columnspan=2)
     Label(addframe,text="Course Code : ",bg='#9EC6F3').grid(row=1,column=0,sticky='e')
     codebox = Entry(addframe,bg="#DAF5FF")
@@ -127,25 +144,27 @@ def addclick() :
     roombox = Entry(addframe,bg="#DAF5FF")
     roombox.grid(row=4,column=1,sticky='w',padx=20)
     Button(addframe,text="Add",width=10,command=addcourse).grid(row=5,columnspan=2,ipady=10)
+    
+ ###############################################เปลี่ยนข้อมูลตัวแปร################################################
 
 def addcourse() :
-    if codebox.get() == "" or namebox.get() == "" or daybox.get() == "" or roombox.get() == "" :
+    if codebox.get() == "" or namebox.get() == "" or daybox.get() == "" or roombox.get() == "" : 
         messagebox.showwarning("Admin: ","Please fullfill all of course data")
         codebox.focus_force()
     else : 
         #define sql select command of course code or course name for duplicating
-        sql = "select * from course where course_code = ? or course_name = ?"
+        sql = "select * from course where course_code=? or course_name=?" #เช็คค่าที่ดึงมาว่าซ้ำไหม
         #execute step
-        cursor.execute(sql,[codebox.get(),namebox.get()])
+        cursor.execute(sql,[codebox.get(),namebox.get()]) #หาค่าใน Database 
         #fetch result
         result = cursor.fetchone()
         if result :
-            messagebox.showwarning("Admin: ","Course code or name already exist.")
+            messagebox.showwarning("Admin: ","Course code or name already exist.") #ถ้าเจอซ้ำให้ขึ้นเตือน
             codebox.select_range(0,END)
             codebox.focus_force()
         else :
             #define insert command for insert a new record into the table
-            sql = "insert into course values (NULL,?,?,?,?)"
+            sql = "insert into course values (NULL,?,?,?,?)" #บันทึกข้อมูลลง Database  
             #execute step
             cursor.execute(sql,[codebox.get(),namebox.get(),daybox.get(),roombox.get()])
             #commit step
@@ -154,16 +173,16 @@ def addcourse() :
             clearclick()
 
 def searchclick() :
-    sql = "select * from course where course_code=? collate nocase" #### collate nocase ไม่สนเล็กใหญ่
+    sql = "select * from course where course_code=? collate nocase" #ค้นหาข้อมูลใน Database เปลี่ยนตัวแปรทั้งหมด
     #execute step
-    cursor.execute(sql,[searchbox.get()])
+    cursor.execute(sql,[searchbox.get()]) 
     #fetch result
     result = cursor.fetchone()
     if result :
-        codebox.config(state='normal') 
+        codebox.config(state='normal') #อ่านเท่านั้น insert ข้อมูลก่อน
         codebox.delete(0,END)
         codebox.insert(0,result[1])
-        codebox.config(state='readonly')
+        codebox.config(state='readonly') #เพิ่มข้อมูลแล้วห้ามแก้ไขต่อ
         namebox.delete(0,END)
         namebox.insert(0,result[2])
         daybox.delete(0,END)
@@ -187,21 +206,26 @@ def updateclick() :
     deleteframe.grid_forget()
     updateframe.grid_rowconfigure((0,1,2,3,4,5,6),weight=1)
     updateframe.grid_columnconfigure((0,1),weight=1)
-    updateframe.grid(row=1,column=0,sticky='news')
+    updateframe.grid(row=1,column=1,sticky='news')
+    
     Label(updateframe,text="Update Course",font="Garamond 26 bold",image=img5,compound=LEFT,bg='#9EC6F3').grid(row=0,columnspan=2)
     Label(updateframe,text="Course Code : ",bg='#9EC6F3').grid(row=1,column=0,sticky='e')
     searchbox = Entry(updateframe,bg="#DAF5FF")
     searchbox.grid(row=1,column=1,sticky='w',padx=20)
     Button(updateframe,text="Search",command=searchclick).grid(row=1,column=1,ipady=10)
+
     Label(updateframe,text="Course Code : ",bg='#9EC6F3').grid(row=2,column=0,sticky='e')
     codebox = Entry(updateframe,bg="#DAF5FF")
     codebox.grid(row=2,column=1,sticky='w',padx=20)
+
     Label(updateframe,text="Course Name : ",bg='#9EC6F3').grid(row=3,column=0,sticky='e')
     namebox = Entry(updateframe,bg="#DAF5FF")
     namebox.grid(row=3,column=1,sticky='w',padx=20)
+
     Label(updateframe,text="Day : ",bg='#9EC6F3').grid(row=4,column=0,sticky='e')
     daybox = Entry(updateframe,bg="#DAF5FF")
     daybox.grid(row=4,column=1,sticky='w',padx=20)
+    
     Label(updateframe,text="Room : ",bg='#9EC6F3').grid(row=5,column=0,sticky='e')
     roombox = Entry(updateframe,bg="#DAF5FF")
     roombox.grid(row=5,column=1,sticky='w',padx=20)
@@ -231,8 +255,9 @@ def updatecourse() :
                 #define sql for updating only day and room fields
                 sql = """ 
                         update course
-                        set day = ? , room = ?
-                        where course_code = ?
+                        set day=? , room=?
+                        where course_code=?
+
                 """
                 #execute step
                 cursor.execute(sql,[daybox.get(),roombox.get(),codebox.get()])
@@ -240,11 +265,12 @@ def updatecourse() :
                 conn.commit()
                 messagebox.showinfo("Admin:","Update course successfully")
                 clearclick()
+
             else :
                 #define sql update command for updating course name, day and room
                 sql = """
                         update course
-                        set course_name = ? , day = ? , room = ?
+                        set course_name=?, day=?, room=?
                         where course_code=?
                 """
                 #execute step
@@ -266,7 +292,7 @@ def deleteclick() :
     right.grid_forget()
     deleteframe.grid_rowconfigure((0,1,2,3,4,5),weight=1)
     deleteframe.grid_columnconfigure((0,1),weight=1)
-    deleteframe.grid(row=1,column=0,sticky='news')
+    deleteframe.grid(row=1,column=1,sticky='news')
     Label(deleteframe,text="Delete Course",font="Garamond 26 bold",image=img5,compound=LEFT,bg='#9EC6F3').grid(row=0,columnspan=2)
     Label(deleteframe,text="Course Code : ",bg='#9EC6F3').grid(row=1,column=0,sticky='e')
     searchbox = Entry(deleteframe,bg="#DAF5FF")
@@ -294,7 +320,7 @@ def deletecourse() :
         cf = messagebox.askquestion("Admin : ","Confirm to delete (Yes/No)")
         if cf == 'yes' :
             #define sql command or sql statement for deletion
-            sql = "delete from course where course_code = ?"
+            sql = "delete from course where course_code=?"
             #execute sql using cursor
             cursor.execute(sql,[codebox.get()])
             #confirm/save data updated using commit() method

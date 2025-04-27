@@ -1,3 +1,0 @@
-insert ข้อมูล
-    insert into student values (1670700044,'Natchanon','Saileamonpiwat','male',1,'pond1','pond1')
-
