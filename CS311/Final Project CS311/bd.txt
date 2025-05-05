@@ -1,0 +1,10 @@
+loginframe = Frame(root, bg="#ffffff", bd=5, relief="ridge")
+loginframe = Frame(root, bg="#ffffff", bd=3, relief="groove")
+
+# Frame ขอบ (ขอบสีน้ำเงิน)
+login_border = Frame(root, bg="#0033cc", padx=4, pady=4)
+login_border.grid(row=0, column=2, columnspan=2, rowspan=4, sticky='news')
+
+# Frame ด้านใน (login เนื้อจริง)
+loginframe = Frame(login_border, bg="#ffffff")
+loginframe.pack(fill='both', expand=True)
