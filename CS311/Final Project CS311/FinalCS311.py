@@ -220,9 +220,9 @@ def welcomepage(result) :
     lefttop.grid_columnconfigure(0,weight=1)
     lefttop.grid(row=1,column=0,sticky='news')
     Label(lefttop,text='MENU',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,column=0,pady=3,sticky=N)
-    Button(lefttop,text="COMPUTER\nEQUIPMENT",width=20,command=COMPUTEREQUIPMENT,bg='#0066FF',fg='#ffffff',font="Helvetica 20 ").grid(row=1,ipady=5,sticky=N)
-    Button(lefttop,text="PHONE",width=20,command=updateclick,bg='#0066FF',fg='#ffffff',font="Helvetica 20 ").grid(row=2,ipady=5,sticky=N)
-    Button(lefttop,text="ACCESSORIES",width=20,command=deleteclick,bg='#0066FF',fg='#ffffff',font="Helvetica 20 ").grid(row=3,ipady=5,sticky=N)
+    Button(lefttop,text="MOUSE",width=20,command=COMPUTEREQUIPMENT,bg='#0066FF',fg='#ffffff',font="Helvetica 20 ").grid(row=1,ipady=5,sticky=N)
+    Button(lefttop,text="KEYBOARD",width=20,command=updateclick,bg='#0066FF',fg='#ffffff',font="Helvetica 20 ").grid(row=2,ipady=5,sticky=N)
+    Button(lefttop,text="HEADPHONE",width=20,command=deleteclick,bg='#0066FF',fg='#ffffff',font="Helvetica 20 ").grid(row=3,ipady=5,sticky=N)
 
 
     leftbottom = Frame(welcomeframe,bg='#ffffff', bd=2, relief="groove")
@@ -266,58 +266,6 @@ def COMPUTEREQUIPMENT() :
     Label(addframe,image=case1,bg='#ffffff',text="CASE3",compound='top',fg='#0066FF',font="Helvetica 30 ").grid(row=1,column=2)
     Button(addframe,text="BUY",width=10,bg='#0066FF',fg='#ffffff',font="Helvetica 20 ").grid(row=2,column=2,ipady=10)
 
-# def addproduct() :
-#     if codebox.get() == "" or namebox.get() == "" or oderid.get() == "" or roombox.get() == "" : 
-#         messagebox.showwarning("Admin: ","Please fullfill all of product data")
-#         codebox.focus_force()
-#     else : 
-#         #define sql select command of product code or product name for duplicating
-#         sql = "select * from product where product_code=? or product_name=?" #เช็คค่าที่ดึงมาว่าซ้ำไหม
-#         #execute step
-#         cursor.execute(sql,[codebox.get(),namebox.get()]) #หาค่าใน Database 
-#         #fetch result
-#         result = cursor.fetchone()
-#         if result :
-#             messagebox.showwarning("Admin: ","product code or name already exist.") #ถ้าเจอซ้ำให้ขึ้นเตือน
-#             codebox.select_range(0,END)
-#             codebox.focus_force()
-#         else :
-#             #define insert command for insert a new record into the table
-#             sql = "insert into product values (NULL,?,?,?,?)" #บันทึกข้อมูลลง Database  
-#             #execute step
-#             cursor.execute(sql,[codebox.get(),namebox.get(),oderid.get(),roombox.get()])
-#             #commit step
-#             conn.commit()
-#             messagebox.showinfo("Admin:","Add product successfully")
-#             clearclick()
-
-def searchclick() :
-    sql = "select * from product where product_code=? collate nocase" #ค้นหาข้อมูลใน Database เปลี่ยนตัวแปรทั้งหมด
-    #execute step
-    cursor.execute(sql,[searchbox.get()]) 
-    #fetch result
-    result = cursor.fetchone()
-    if result :
-        codebox.config(state='normal') #อ่านเท่านั้น insert ข้อมูลก่อน
-        codebox.delete(0,END)
-        codebox.insert(0,result[1])
-        codebox.config(state='readonly') #เพิ่มข้อมูลแล้วห้ามแก้ไขต่อ
-        namebox.delete(0,END)
-        namebox.insert(0,result[2])
-        oderid.delete(0,END)
-        oderid.insert(0,result[3])
-        roombox.delete(0,END)
-        roombox.insert(0,result[4])
-    else :
-        messagebox.showwarning("Admin: ","product code not found\n Try again.")
-        searchbox.select_range(0,END)
-        searchbox.focus_force()
-        codebox.config(state='normal')
-        namebox.delete(0,END)
-        oderid.delete(0,END)
-        roombox.delete(0,END)
-        codebox.delete(0,END)
- 
 def updateclick() :
     global searchbox,codebox,namebox,oderid,roombox
     right.grid_forget()
@@ -331,7 +279,7 @@ def updateclick() :
     Label(updateframe,text="product Code : ",bg='#ffffff').grid(row=1,column=0,sticky='e')
     searchbox = Entry(updateframe,bg="#E6E6E6")
     searchbox.grid(row=1,column=1,sticky='w',padx=20)
-    Button(updateframe,text="Search",command=searchclick).grid(row=1,column=1,ipady=10)
+    Button(updateframe,text="Search").grid(row=1,column=1,ipady=10)
 
     Label(updateframe,text="product Code : ",bg='#ffffff').grid(row=2,column=0,sticky='e')
     codebox = Entry(updateframe,bg="#E6E6E6")
@@ -404,49 +352,6 @@ def updateproduct() :
             codebox.focus_force()
 
 
-def deleteclick() :
-    global searchbox,codebox,namebox,oderid,roombox
-    updateframe.grid_forget()
-    addframe.grid_forget()
-    right.grid_forget()
-    deleteframe.grid_rowconfigure((0,1,2,3,4,5),weight=1)
-    deleteframe.grid_columnconfigure((0,1),weight=1)
-    deleteframe.grid(row=1,column=1,rowspan=2,sticky='news')
-    Label(deleteframe,text="Delete product",font="Garamond 26 bold",compound=LEFT,bg='#ffffff').grid(row=0,columnspan=2)
-    Label(deleteframe,text="product Code : ",bg='#ffffff').grid(row=1,column=0,sticky='e')
-    searchbox = Entry(deleteframe,bg="#E6E6E6")
-    searchbox.grid(row=1,column=1,sticky='w',padx=20)
-    Button(deleteframe,text="Search",command=searchclick).grid(row=1,column=1,ipady=10)
-    Label(deleteframe,text="product Code : ",bg='#ffffff').grid(row=2,column=0,sticky='e')
-    codebox = Entry(deleteframe,bg="#E6E6E6")
-    codebox.grid(row=2,column=1,sticky='w',padx=20)
-    Label(deleteframe,text="product Name : ",bg='#ffffff').grid(row=3,column=0,sticky='e')
-    namebox = Entry(deleteframe,bg="#E6E6E6")
-    namebox.grid(row=3,column=1,sticky='w',padx=20)
-    Label(deleteframe,text="oder : ",bg='#ffffff').grid(row=4,column=0,sticky='e')
-    oderid = Entry(deleteframe,bg="#E6E6E6")
-    oderid.grid(row=4,column=1,sticky='w',padx=20)
-    Label(deleteframe,text="Room : ",bg='#ffffff').grid(row=5,column=0,sticky='e')
-    roombox = Entry(deleteframe,bg="#E6E6E6")
-    roombox.grid(row=5,column=1,sticky='w',padx=20)
-    Button(deleteframe,text="Delete product",width=10,command=deleteproduct).grid(row=6,columnspan=2,ipady=10)
-
-def deleteproduct() :
-    if codebox.get() == "":
-        messagebox.showwarning("Admin: ","Please fullfill all of product data")
-        codebox.focus_force()
-    else :
-        cf = messagebox.askquestion("Admin : ","Confirm to delete (Yes/No)")
-        if cf == 'yes' :
-            #define sql command or sql statement for deletion
-            sql = "delete from product where product_code=?"
-            #execute sql using cursor
-            cursor.execute(sql,[codebox.get()])
-            #confirm/save data updated using commit() method
-            conn.commit()
-            messagebox.showinfo("Admin : ","Delete Successfully")
-            clearclick()
-
 def clearclick() :
     codebox.config(state='normal')
     codebox.delete(0,END)
@@ -487,3 +392,57 @@ introshop()
 root.mainloop()
 cursor.close()
 conn.close()
+
+
+# def addproduct() :
+#     if codebox.get() == "" or namebox.get() == "" or oderid.get() == "" or roombox.get() == "" : 
+#         messagebox.showwarning("Admin: ","Please fullfill all of product data")
+#         codebox.focus_force()
+#     else : 
+#         #define sql select command of product code or product name for duplicating
+#         sql = "select * from product where product_code=? or product_name=?" #เช็คค่าที่ดึงมาว่าซ้ำไหม
+#         #execute step
+#         cursor.execute(sql,[codebox.get(),namebox.get()]) #หาค่าใน Database 
+#         #fetch result
+#         result = cursor.fetchone()
+#         if result :
+#             messagebox.showwarning("Admin: ","product code or name already exist.") #ถ้าเจอซ้ำให้ขึ้นเตือน
+#             codebox.select_range(0,END)
+#             codebox.focus_force()
+#         else :
+#             #define insert command for insert a new record into the table
+#             sql = "insert into product values (NULL,?,?,?,?)" #บันทึกข้อมูลลง Database  
+#             #execute step
+#             cursor.execute(sql,[codebox.get(),namebox.get(),oderid.get(),roombox.get()])
+#             #commit step
+#             conn.commit()
+#             messagebox.showinfo("Admin:","Add product successfully")
+#             clearclick()
+
+# def searchclick() :
+#     sql = "select * from product where product_code=? collate nocase" #ค้นหาข้อมูลใน Database เปลี่ยนตัวแปรทั้งหมด
+#     #execute step
+#     cursor.execute(sql,[searchbox.get()]) 
+#     #fetch result
+#     result = cursor.fetchone()
+#     if result :
+#         codebox.config(state='normal') #อ่านเท่านั้น insert ข้อมูลก่อน
+#         codebox.delete(0,END)
+#         codebox.insert(0,result[1])
+#         codebox.config(state='readonly') #เพิ่มข้อมูลแล้วห้ามแก้ไขต่อ
+#         namebox.delete(0,END)
+#         namebox.insert(0,result[2])
+#         oderid.delete(0,END)
+#         oderid.insert(0,result[3])
+#         roombox.delete(0,END)
+#         roombox.insert(0,result[4])
+#     else :
+#         messagebox.showwarning("Admin: ","product code not found\n Try again.")
+#         searchbox.select_range(0,END)
+#         searchbox.focus_force()
+#         codebox.config(state='normal')
+#         namebox.delete(0,END)
+#         oderid.delete(0,END)
+#         roombox.delete(0,END)
+#         codebox.delete(0,END)
+ 
