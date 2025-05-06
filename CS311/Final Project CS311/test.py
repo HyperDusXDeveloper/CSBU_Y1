@@ -29,10 +29,10 @@ def introshop():
     introframe.columnconfigure((0),weight=1)
     introframe.grid(row=0,column=0,columnspan=4,rowspan=4,sticky='news')
     Label(introframe,image=nonlogo,bg='#ffffff').grid(row=0,column=0,sticky=S)
-    Button(introframe,text="WELCOME",width=10,command=loginlayout,bg='#0066FF',fg='#ffffff',font="Helvetica 25 ").grid(row=1,column=0,sticky=N)
+    Button(introframe,text="WELCOME",width=10,command=welcomelayout,bg='#0066FF',fg='#ffffff',font="Helvetica 25 ").grid(row=1,column=0,sticky=N)
     
 
-def loginlayout() :
+def welcomelayout() :
     introframe.grid_forget()
     registerframe.grid_forget()
     global user,pwd
@@ -87,7 +87,9 @@ def loginclick(user,pwd) :
 
 
 def registerclick() :
-    global fullname,username,year,gender,password,confirmpassword,Nyear
+    global fullname,username,year,gender,password,confirmpassword,point,wallet
+    point = 0
+    wallet = 0
     loginframe.grid_forget()
     loginframeimg.grid_forget()
     registerframe.rowconfigure((0,1,2,3,4,5,6,7),weight=1)
@@ -124,7 +126,7 @@ def registerclick() :
     regisaction.grid(row=7,column=0,ipady=5,ipadx=5,pady=5,sticky='e')
 
     fullname.focus_force()
-    loginbtn = Button(registerframe,text="Back to Login",command=loginlayout,bg='#0066FF',fg='#ffffff')
+    loginbtn = Button(registerframe,text="Back to Login",command=welcomelayout,bg='#0066FF',fg='#ffffff')
     loginbtn.grid(row=7,column=1,ipady=5,ipadx=5,pady=5,sticky='w',padx=10)
 
 def registration() : 
@@ -157,13 +159,13 @@ def registration() :
             username.focus_force()
         else :
             if password.get() == confirmpassword.get() :
-                sql = "insert into partner values (?,?,?,?,?)"
+                sql = "insert into partner values (?,?,?,?,?,?,?)"
                 Nyear = year.get()
-                NEWyear = 2025 - int(Nyear) 
-                userinformation = [fullname.get(),username.get(),NEWyear,gender.get(),password.get()]
+                NEWyear = 2025 - int(Nyear)
+                userinformation = [fullname.get(),username.get(),NEWyear,gender.get(),password.get(),point,wallet]
                 cursor.execute(sql,userinformation)
                 conn.commit()
-                retrivedata()
+                checkinfomation()
                 messagebox.showinfo("Admin:","Registration Successfully")
                 year.delete(0,END)
                 gender.delete(0,END)
@@ -176,7 +178,7 @@ def registration() :
                 password.selection_range(0,END)
                 password.focus_force()
 
-def retrivedata() :
+def checkinfomation() :
     sql = "select * from partner"
     cursor.execute(sql)
     result = cursor.fetchall()
@@ -217,10 +219,10 @@ def welcomepage(result) :
     lefttop.grid_rowconfigure((0,1,2,3),weight=1)
     lefttop.grid_columnconfigure(0,weight=1)
     lefttop.grid(row=1,column=0,sticky='news')
-    Label(lefttop,text='MENU',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,column=0,pady=10,sticky=S)
-    Button(lefttop,text="Add product",width=15,command=addclick,bg='#0066FF',fg='#ffffff',font="Helvetica 25 ").grid(row=1,ipady=5,sticky=N)
-    Button(lefttop,text="Update product",width=15,command=updateclick,bg='#0066FF',fg='#ffffff',font="Helvetica 25 ").grid(row=2,ipady=5,sticky=N)
-    Button(lefttop,text="Delete product",width=15,command=deleteclick,bg='#0066FF',fg='#ffffff',font="Helvetica 25 ").grid(row=3,ipady=5,sticky=N)
+    Label(lefttop,text='MENU',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,column=0,pady=3,sticky=N)
+    Button(lefttop,text="MOUSE",width=20,command=mousecrick,bg='#0066FF',fg='#ffffff',font="Helvetica 20 ").grid(row=1,ipady=5,sticky=N)
+    Button(lefttop,text="KEYBOARD",width=20,command=keyboardcrick,bg='#0066FF',fg='#ffffff',font="Helvetica 20 ").grid(row=2,ipady=5,sticky=N)
+    Button(lefttop,text="HEADPHONE",width=20,command=headphonecrick,bg='#0066FF',fg='#ffffff',font="Helvetica 20 ").grid(row=3,ipady=5,sticky=N)
 
 
     leftbottom = Frame(welcomeframe,bg='#ffffff', bd=2, relief="groove")
@@ -228,99 +230,122 @@ def welcomepage(result) :
     leftbottom.grid_columnconfigure(0,weight=1)
     leftbottom.grid(row=2,column=0,sticky='news')
     Label(leftbottom,text='MYINFO',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,pady=10,sticky=S)
-    Button(leftbottom,text="MY WALLET",width=15,command=logoutclick,bg='#0066FF',fg='#ffffff',font="Helvetica 25 ").grid(row=1,ipady=10,sticky=N)
-    Button(leftbottom,text="MY POINT",width=15,command=logoutclick,bg='#0066FF',fg='#ffffff',font="Helvetica 25 ").grid(row=2,ipady=10,sticky=N)
+    Button(leftbottom,text="MY WALLET",width=15,command=mywalletlayout,bg='#0066FF',fg='#ffffff',font="Helvetica 25 ").grid(row=1,ipady=10,sticky=N)
+    Button(leftbottom,text="MY POINT",width=15,command=mypointlayout,bg='#0066FF',fg='#ffffff',font="Helvetica 25 ").grid(row=2,ipady=10,sticky=N)
     
     #RIGHT
 
-#RIGHT FRAME
-    right = Frame(welcomeframe, bg='#ffffff')
-    right.grid_rowconfigure(0, weight=1)
-    right.grid_columnconfigure(0, weight=1)
-    right.grid(row=1, column=1, rowspan=2, sticky='news')
-    Label(right, image=shoping, bg='#ffffff',text="SHOPING", compound='top', fg='#0066FF', font="Helvetica 60 ").pack(pady=20,padx=50)
-
+    right = Frame(welcomeframe,bg='#ffffff')
+    right.grid_rowconfigure((0),weight=1)
+    right.grid_columnconfigure(0,weight=1)
+    right.grid(row=1,column=1,rowspan=2,sticky='news')
+    Label(right,image=shoping,bg='#fffffF',text="SHOPING",compound='top',fg='#0066FF',font="Helvetica 60 ").grid(row=0)
+    #create widgets
     # Label(top2,image=usericon,bg='#ffffff',text="partner ID : "+str(result[0])+"\n"+"Name : "+result[1]+" "+result[2],compound=LEFT).grid(row=0)
 
 
-def addclick() :
-    global addframe
-    global codebox,namebox,oderid,roombox
+def mousecrick() :
+    global mouseframe
+
+    keyboardframe.grid_forget()
+    right.grid_forget()
+    updateframe.grid_forget()
+    deleteframe.grid_forget()
+    headphoneframe.grid_forget()
+    walletframe.grid_forget()
+    pointframe.grid_forget()
+
+    mouseframe.grid_rowconfigure((0,1,2),weight=1)
+    mouseframe.grid_columnconfigure((0,1,2),weight=1)
+    mouseframe.grid(row=1,column=1,rowspan=2,sticky='news')
+    Label(mouseframe,text='MOUSE',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,sticky=NW,pady=10)
+
+def keyboarddata(productimagename,productname,price):
+    global keyboardresult
+    sql = "select * from keyboardproduct"
+    cursor.execute(sql,[productimagename,productname,price])
+    keyboardresult = cursor.fetchall()
+
+def keyboardcrick() :
+    global keyboardframe
 
     right.grid_forget()
     updateframe.grid_forget()
     deleteframe.grid_forget()
+    headphoneframe.grid_forget()
+    mouseframe.grid_forget()
+    walletframe.grid_forget()
+    pointframe.grid_forget()
 
-    addframe.grid_rowconfigure((0),weight=1)
-    addframe.grid_columnconfigure((0),weight=1)
-    addframe.grid(row=1,column=1,rowspan=2,sticky='news')
+    keyboardframe.grid_rowconfigure((0,1,2),weight=1)
+    keyboardframe.grid_columnconfigure((0,1,2),weight=1)
+    keyboardframe.grid(row=1,column=1,rowspan=2,sticky='news')
 
-    # Canvas และ Scrollbar
-    canvas = Canvas(addframe, bg='#000000', highlightthickness=0)
-    scrollbar = Scrollbar(addframe, orient='vertical', command=canvas.yview)
-    canvas.configure(yscrollcommand=scrollbar.set)
-
-    # กำหนดตำแหน่ง
-    canvas.grid(row=0, column=0, sticky='nse')
-    scrollbar.grid(row=0, column=0, sticky='nse')
-
-    # สร้าง inner frame ที่จะวาง widget ภายใน canvas
-    scrollable_frame = Frame(canvas, bg='#ffffff')
+    Label(keyboardframe,text='KEYBOARD',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,sticky=NW,pady=10)
+    print("Total row = ",len(keyboardresult))
+    for i,data in enumerate(keyboardresult) :
+        print("Row#",i+1,data)
     
-    # ทำให้ scrollable_frame ตอบสนองการเลื่อน
-    scrollable_frame.bind(
-        "<Configure>",
-        lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
-    )
+def headphonecrick() :
+    global headphoneframe
 
-    canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
-    for i in range(200):  # เพิ่มสินค้าเพื่อทดสอบการเลื่อน
-        Label(scrollable_frame, text=f"สินค้า {i+1}", font="Helvetica 18", bg="#ffffff").pack(pady=10)
+    right.grid_forget()
+    keyboardframe.grid_forget()
+    mouseframe.grid_forget()
+    updateframe.grid_forget()
+    deleteframe.grid_forget()
+    walletframe.grid_forget()
+    pointframe.grid_forget()
 
-    # ตัวอย่าง: ใส่ข้อมูลลงใน scrollable_frame
+    headphoneframe.grid_rowconfigure((0,1,2),weight=1)
+    headphoneframe.grid_columnconfigure((0,1,2),weight=1)
+    headphoneframe.grid(row=1,column=1,rowspan=2,sticky='news')
+    Label(headphoneframe,text='HEADPHONE',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,sticky=NW,pady=10)
 
+def mywalletlayout() :
+    global walletframe
 
-def searchclick() :
-    sql = "select * from product where product_code=? collate nocase" #ค้นหาข้อมูลใน Database เปลี่ยนตัวแปรทั้งหมด
-    #execute step
-    cursor.execute(sql,[searchbox.get()]) 
-    #fetch result
-    result = cursor.fetchone()
-    if result :
-        codebox.config(state='normal') #อ่านเท่านั้น insert ข้อมูลก่อน
-        codebox.delete(0,END)
-        codebox.insert(0,result[1])
-        codebox.config(state='readonly') #เพิ่มข้อมูลแล้วห้ามแก้ไขต่อ
-        namebox.delete(0,END)
-        namebox.insert(0,result[2])
-        oderid.delete(0,END)
-        oderid.insert(0,result[3])
-        roombox.delete(0,END)
-        roombox.insert(0,result[4])
-    else :
-        messagebox.showwarning("Admin: ","product code not found\n Try again.")
-        searchbox.select_range(0,END)
-        searchbox.focus_force()
-        codebox.config(state='normal')
-        namebox.delete(0,END)
-        oderid.delete(0,END)
-        roombox.delete(0,END)
-        codebox.delete(0,END)
- 
+    keyboardframe.grid_forget()
+    right.grid_forget()
+    updateframe.grid_forget()
+    pointframe.grid_forget()
+    deleteframe.grid_forget()
+    headphoneframe.grid_forget()
+
+    walletframe.grid_rowconfigure((0,1,2),weight=1)
+    walletframe.grid_columnconfigure((0,1,2),weight=1)
+    walletframe.grid(row=1,column=1,rowspan=2,sticky='news')
+    Label(walletframe,text='MY WALLET',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,sticky=NW,pady=10)
+
+def mypointlayout() :
+    global pointframe
+
+    keyboardframe.grid_forget()
+    walletframe.grid_forget()
+    right.grid_forget()
+    updateframe.grid_forget()
+    deleteframe.grid_forget()
+    headphoneframe.grid_forget()
+
+    pointframe.grid_rowconfigure((0,1,2),weight=1)
+    pointframe.grid_columnconfigure((0,1,2),weight=1)
+    pointframe.grid(row=1,column=1,rowspan=2,sticky='news')
+    Label(pointframe,text='MY POINT',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,sticky=NW,pady=10)
+
 def updateclick() :
     global searchbox,codebox,namebox,oderid,roombox
     right.grid_forget()
-    addframe.grid_forget()
+    mouseframe.grid_forget()
     deleteframe.grid_forget()
     updateframe.grid_rowconfigure((0,1,2,3,4,5,6),weight=1)
     updateframe.grid_columnconfigure((0,1),weight=1)
     updateframe.grid(row=1,column=1,rowspan=2,sticky='news')
     
-    Label(updateframe,text="Update product",font="Garamond 26 bold",image=img5,compound=LEFT,bg='#ffffff').grid(row=0,columnspan=2)
+    Label(updateframe,text="Update product",font="Garamond 26 bold",compound=LEFT,bg='#ffffff').grid(row=0,columnspan=2)
     Label(updateframe,text="product Code : ",bg='#ffffff').grid(row=1,column=0,sticky='e')
     searchbox = Entry(updateframe,bg="#E6E6E6")
     searchbox.grid(row=1,column=1,sticky='w',padx=20)
-    Button(updateframe,text="Search",command=searchclick).grid(row=1,column=1,ipady=10)
+    Button(updateframe,text="Search").grid(row=1,column=1,ipady=10)
 
     Label(updateframe,text="product Code : ",bg='#ffffff').grid(row=2,column=0,sticky='e')
     codebox = Entry(updateframe,bg="#E6E6E6")
@@ -392,50 +417,6 @@ def updateproduct() :
             codebox.select_range(0,END)
             codebox.focus_force()
 
-
-def deleteclick() :
-    global searchbox,codebox,namebox,oderid,roombox
-    updateframe.grid_forget()
-    addframe.grid_forget()
-    right.grid_forget()
-    deleteframe.grid_rowconfigure((0,1,2,3,4,5),weight=1)
-    deleteframe.grid_columnconfigure((0,1),weight=1)
-    deleteframe.grid(row=1,column=1,rowspan=2,sticky='news')
-    Label(deleteframe,text="Delete product",font="Garamond 26 bold",image=img5,compound=LEFT,bg='#ffffff').grid(row=0,columnspan=2)
-    Label(deleteframe,text="product Code : ",bg='#ffffff').grid(row=1,column=0,sticky='e')
-    searchbox = Entry(deleteframe,bg="#E6E6E6")
-    searchbox.grid(row=1,column=1,sticky='w',padx=20)
-    Button(deleteframe,text="Search",command=searchclick).grid(row=1,column=1,ipady=10)
-    Label(deleteframe,text="product Code : ",bg='#ffffff').grid(row=2,column=0,sticky='e')
-    codebox = Entry(deleteframe,bg="#E6E6E6")
-    codebox.grid(row=2,column=1,sticky='w',padx=20)
-    Label(deleteframe,text="product Name : ",bg='#ffffff').grid(row=3,column=0,sticky='e')
-    namebox = Entry(deleteframe,bg="#E6E6E6")
-    namebox.grid(row=3,column=1,sticky='w',padx=20)
-    Label(deleteframe,text="oder : ",bg='#ffffff').grid(row=4,column=0,sticky='e')
-    oderid = Entry(deleteframe,bg="#E6E6E6")
-    oderid.grid(row=4,column=1,sticky='w',padx=20)
-    Label(deleteframe,text="Room : ",bg='#ffffff').grid(row=5,column=0,sticky='e')
-    roombox = Entry(deleteframe,bg="#E6E6E6")
-    roombox.grid(row=5,column=1,sticky='w',padx=20)
-    Button(deleteframe,text="Delete product",width=10,command=deleteproduct).grid(row=6,columnspan=2,ipady=10)
-
-def deleteproduct() :
-    if codebox.get() == "":
-        messagebox.showwarning("Admin: ","Please fullfill all of product data")
-        codebox.focus_force()
-    else :
-        cf = messagebox.askquestion("Admin : ","Confirm to delete (Yes/No)")
-        if cf == 'yes' :
-            #define sql command or sql statement for deletion
-            sql = "delete from product where product_code=?"
-            #execute sql using cursor
-            cursor.execute(sql,[codebox.get()])
-            #confirm/save data updated using commit() method
-            conn.commit()
-            messagebox.showinfo("Admin : ","Delete Successfully")
-            clearclick()
-
 def clearclick() :
     codebox.config(state='normal')
     codebox.delete(0,END)
@@ -445,13 +426,13 @@ def clearclick() :
        
 def logoutclick() :
     updateframe.grid_forget()
-    addframe.grid_forget()
+    mouseframe.grid_forget()
     deleteframe.grid_forget()
     right.grid_forget()
     top.grid_forget()
     welcomeframe.grid_forget()
     pwdframe.grid_forget()
-    loginlayout() 
+    welcomelayout() 
 
 connection()
 root = mainwindow()
@@ -463,7 +444,11 @@ introframe = Frame(root,bg='#ffffff')
 welcomeframe = Frame(root,bg='#ffffff')
 updateframe = Frame(root,bg="#ffffff")
 pwdframe = Frame(root,bg='#ffffff')
-addframe = Frame(welcomeframe,bg='#ffffff')
+mouseframe = Frame(welcomeframe,bg='#ffffff')
+keyboardframe = Frame(welcomeframe,bg='#ffffff')
+headphoneframe = Frame(welcomeframe,bg='#ffffff')
+walletframe = Frame(welcomeframe,bg='#ffffff')
+pointframe = Frame(welcomeframe,bg='#ffffff')
 updateframe = Frame(welcomeframe,bg='#ffffff')
 deleteframe = Frame(welcomeframe,bg='#ffffff')
 selectoption = StringVar()
@@ -471,8 +456,104 @@ usericon = PhotoImage(file='images/Usericon.png').subsample(2,2)
 ATCimage = PhotoImage(file='images/ATC3.png')
 shoping = PhotoImage(file="images/shoping.png").subsample(2,2)
 nonlogo = PhotoImage(file='images/nonlogo.png').subsample(8,8)
-img5 = PhotoImage(file='images/nonlogo.png').subsample(8,8)
+case1 = PhotoImage(file='images/case1.png').subsample(4,4)
 introshop()
 root.mainloop()
 cursor.close()
 conn.close()
+
+
+# def addproduct() :
+#     if codebox.get() == "" or namebox.get() == "" or oderid.get() == "" or roombox.get() == "" : 
+#         messagebox.showwarning("Admin: ","Please fullfill all of product data")
+#         codebox.focus_force()
+#     else : 
+#         #define sql select command of product code or product name for duplicating
+#         sql = "select * from product where product_code=? or product_name=?" #เช็คค่าที่ดึงมาว่าซ้ำไหม
+#         #execute step
+#         cursor.execute(sql,[codebox.get(),namebox.get()]) #หาค่าใน Database 
+#         #fetch result
+#         result = cursor.fetchone()
+#         if result :
+#             messagebox.showwarning("Admin: ","product code or name already exist.") #ถ้าเจอซ้ำให้ขึ้นเตือน
+#             codebox.select_range(0,END)
+#             codebox.focus_force()
+#         else :
+#             #define insert command for insert a new record into the table
+#             sql = "insert into product values (NULL,?,?,?,?)" #บันทึกข้อมูลลง Database  
+#             #execute step
+#             cursor.execute(sql,[codebox.get(),namebox.get(),oderid.get(),roombox.get()])
+#             #commit step
+#             conn.commit()
+#             messagebox.showinfo("Admin:","Add product successfully")
+#             clearclick()
+
+# def searchclick() :
+#     sql = "select * from product where product_code=? collate nocase" #ค้นหาข้อมูลใน Database เปลี่ยนตัวแปรทั้งหมด
+#     #execute step
+#     cursor.execute(sql,[searchbox.get()]) 
+#     #fetch result
+#     result = cursor.fetchone()
+#     if result :
+#         codebox.config(state='normal') #อ่านเท่านั้น insert ข้อมูลก่อน
+#         codebox.delete(0,END)
+#         codebox.insert(0,result[1])
+#         codebox.config(state='readonly') #เพิ่มข้อมูลแล้วห้ามแก้ไขต่อ
+#         namebox.delete(0,END)
+#         namebox.insert(0,result[2])
+#         oderid.delete(0,END)
+#         oderid.insert(0,result[3])
+#         roombox.delete(0,END)
+#         roombox.insert(0,result[4])
+#     else :
+#         messagebox.showwarning("Admin: ","product code not found\n Try again.")
+#         searchbox.select_range(0,END)
+#         searchbox.focus_force()
+#         codebox.config(state='normal')
+#         namebox.delete(0,END)
+#         oderid.delete(0,END)
+#         roombox.delete(0,END)
+#         codebox.delete(0,END)
+
+# def deleteclick() :
+#     global searchbox,codebox,namebox,oderid,roombox
+#     updateframe.grid_forget()
+#     mouseframe.grid_forget()
+#     right.grid_forget()
+#     deleteframe.grid_rowconfigure((0,1,2,3,4,5),weight=1)
+#     deleteframe.grid_columnconfigure((0,1),weight=1)
+#     deleteframe.grid(row=1,column=1,rowspan=2,sticky='news')
+#     Label(deleteframe,text="Delete product",font="Garamond 26 bold",compound=LEFT,bg='#ffffff').grid(row=0,columnspan=2)
+#     Label(deleteframe,text="product Code : ",bg='#ffffff').grid(row=1,column=0,sticky='e')
+#     searchbox = Entry(deleteframe,bg="#E6E6E6")
+#     searchbox.grid(row=1,column=1,sticky='w',padx=20)
+#     Button(deleteframe,text="Search",command=searchclick).grid(row=1,column=1,ipady=10)
+#     Label(deleteframe,text="product Code : ",bg='#ffffff').grid(row=2,column=0,sticky='e')
+#     codebox = Entry(deleteframe,bg="#E6E6E6")
+#     codebox.grid(row=2,column=1,sticky='w',padx=20)
+#     Label(deleteframe,text="product Name : ",bg='#ffffff').grid(row=3,column=0,sticky='e')
+#     namebox = Entry(deleteframe,bg="#E6E6E6")
+#     namebox.grid(row=3,column=1,sticky='w',padx=20)
+#     Label(deleteframe,text="oder : ",bg='#ffffff').grid(row=4,column=0,sticky='e')
+#     oderid = Entry(deleteframe,bg="#E6E6E6")
+#     oderid.grid(row=4,column=1,sticky='w',padx=20)
+#     Label(deleteframe,text="Room : ",bg='#ffffff').grid(row=5,column=0,sticky='e')
+#     roombox = Entry(deleteframe,bg="#E6E6E6")
+#     roombox.grid(row=5,column=1,sticky='w',padx=20)
+#     Button(deleteframe,text="Delete product",width=10,command=deleteproduct).grid(row=6,columnspan=2,ipady=10)
+
+# def deleteproduct() :
+#     if codebox.get() == "":
+#         messagebox.showwarning("Admin: ","Please fullfill all of product data")
+#         codebox.focus_force()
+#     else :
+#         cf = messagebox.askquestion("Admin : ","Confirm to delete (Yes/No)")
+#         if cf == 'yes' :
+#             #define sql command or sql statement for deletion
+#             sql = "delete from product where product_code=?"
+#             #execute sql using cursor
+#             cursor.execute(sql,[codebox.get()])
+#             #confirm/save data updated using commit() method
+#             conn.commit()
+#             messagebox.showinfo("Admin : ","Delete Successfully")
+#             clearclick()
