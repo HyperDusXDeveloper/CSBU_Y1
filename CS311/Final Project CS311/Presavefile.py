@@ -193,7 +193,7 @@ def welcomepage(result) :
     global top,lefttop,leftbottom,right
 
     #MAIN CHANGE
-    global keyboardbutton,mousebutton,headphonebutton,mywalletbutton,mypointbutton
+    global keyboardbutton,mousebutton,headphonebutton
 
     loginframe.grid_forget()
     loginframeimg.grid_forget()
@@ -239,10 +239,8 @@ def welcomepage(result) :
     leftbottom.grid_columnconfigure(0,weight=1)
     leftbottom.grid(row=2,column=0,sticky='news')
     Label(leftbottom,text='MYINFO',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,pady=10,sticky=S)
-    mywalletbutton = Button(leftbottom,text="MY WALLET",width=20,command=mywalletlayout,bg='#D4D4D4',fg='#ffffff',font="Helvetica 20 ")
-    mywalletbutton.grid(row=1,ipady=10,sticky=N)
-    mypointbutton = Button(leftbottom,text="MY POINT",width=20,command=mypointlayout,bg='#D4D4D4',fg='#ffffff',font="Helvetica 20 ")
-    mypointbutton.grid(row=2,ipady=10,sticky=N)
+    Button(leftbottom,text="MY WALLET",width=15,command=mywalletlayout,bg='#D4D4D4',fg='#ffffff',font="Helvetica 20 ").grid(row=1,ipady=10,sticky=N)
+    Button(leftbottom,text="MY POINT",width=15,command=mypointlayout,bg='#D4D4D4',fg='#ffffff',font="Helvetica 20 ").grid(row=2,ipady=10,sticky=N)
     
     #RIGHT
 
@@ -270,8 +268,6 @@ def mousecrick() :
     mousebutton['bg'] = "#0066FF"
     keyboardbutton['bg'] = "#D4D4D4"
     headphonebutton['bg'] = "#D4D4D4"
-    mywalletbutton['bg'] = "#D4D4D4"
-    mypointbutton['bg'] = "#D4D4D4"
 
     mouseframe.grid_rowconfigure((0,1,2,3,4,5,6,7),weight=1)
     mouseframe.grid_columnconfigure((0,1,2),weight=1)
@@ -335,8 +331,6 @@ def keyboardcrick() :
     keyboardbutton['bg'] = "#0066FF"
     mousebutton['bg'] = "#D4D4D4"
     headphonebutton['bg'] = "#D4D4D4"
-    mywalletbutton['bg'] = "#D4D4D4"
-    mypointbutton['bg'] = "#D4D4D4"
 
     keyboardframe.grid_rowconfigure((0,1,2,3,4,5,6,7),weight=1)
     keyboardframe.grid_columnconfigure((0,1,2),weight=1)
@@ -392,8 +386,6 @@ def headphonecrick() :
     mousebutton['bg'] = "#D4D4D4"
     keyboardbutton['bg'] = "#D4D4D4"
     headphonebutton['bg'] = "#0066FF"
-    mywalletbutton['bg'] = "#D4D4D4"
-    mypointbutton['bg'] = "#D4D4D4"
 
     headphoneframe.grid_rowconfigure((0,1,2,3,4,5,6,7),weight=1)
     headphoneframe.grid_columnconfigure((0,1,2),weight=1)
@@ -422,7 +414,7 @@ def headphonecrick() :
     
     Label(headphoneframe,text=headphonetext[2],image=headphoneimage[2],bg='#ffffff',fg='#000000',font="Helvetica 15 bold",compound='top').grid(row=1,column=2,sticky=SW,padx=70)
     Label(headphoneframe,text=str(headphoneprice[2]) + " BATH",bg='#ffffff',fg='#FF5050',font="Helvetica 25 bold").grid(row=2,column=2,sticky=NW,padx=40)
-    Spinbox(headphoneframe,width=15,bg='#D4D4D4',fg='#000000',from_=0,to=10,justify='center',font="Helvetica 15 ").grid(row=3,column=2,sticky=NW,pady=10,padx=40)
+    Spinbox(headphoneframe,width=15,bg='#D4D4D4',fg='#000000',from_=0,to=10,justify='center',font="Helvetica 15 ").grid(row=3,column=2,sticky=NW,pady=10,padx=50)
     
     Label(headphoneframe,text=headphonetext[3],image=headphoneimage[3],bg='#ffffff',fg='#000000',font="Helvetica 15 bold",compound='top').grid(row=4,column=0,sticky=SW,padx=90)
     Label(headphoneframe,text=str(headphoneprice[3]) + " BATH",bg='#ffffff',fg='#FF5050',font="Helvetica 25 bold").grid(row=5,column=0,sticky=NW,padx=65)
@@ -440,32 +432,17 @@ def headphonecrick() :
 def mywalletlayout() :
     global walletframe
 
+    keyboardframe.grid_forget()
     right.grid_forget()
     updateframe.grid_forget()
     pointframe.grid_forget()
     deleteframe.grid_forget()
-    mouseframe.grid_forget()
-    keyboardframe.grid_forget()
     headphoneframe.grid_forget()
 
-    mousebutton['bg'] = "#D4D4D4"
-    keyboardbutton['bg'] = "#D4D4D4"
-    headphonebutton['bg'] = "#D4D4D4"
-    mywalletbutton['bg'] = "#0066FF"
-    mypointbutton['bg'] = "#D4D4D4"
-
-    walletframe.grid_rowconfigure((0,1,2,3,4,5),weight=1)
+    walletframe.grid_rowconfigure((0,1,2),weight=1)
     walletframe.grid_columnconfigure((0,1,2),weight=1)
     walletframe.grid(row=1,column=1,rowspan=2,sticky='news')
-
-    # sql = "select * from partner where wallet=?;"
-    # cursor.execute(sql,[wallet])
-    # result = cursor.fetchone()
-
-    Label(walletframe,text='WALLET',bg='#ffffff',fg='#000000',font="Helvetica 30 bold").grid(row=0,column=0,pady=20,padx=20,sticky=NW)
-    Label(walletframe,text='WALLET MONEY',bg='#ffffff',fg='#000000',font="Helvetica 50 bold").grid(row=2,columnspan=3,sticky=N)
-    Label(walletframe,text=result[6],bg='#ffffff',fg='#0066FF',font="Helvetica 50 bold").grid(row=3,columnspan=3,sticky=N)
-
+    Label(walletframe,text='MY WALLET',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,sticky=NW,pady=10)
 
 def mypointlayout() :
     global pointframe
@@ -477,15 +454,11 @@ def mypointlayout() :
     deleteframe.grid_forget()
     headphoneframe.grid_forget()
 
-    mousebutton['bg'] = "#D4D4D4"
-    keyboardbutton['bg'] = "#D4D4D4"
-    headphonebutton['bg'] = "#D4D4D4"
-    mywalletbutton['bg'] = "#D4D4D4"
-    mypointbutton['bg'] = "#0066FF"
     pointframe.grid_rowconfigure((0,1,2),weight=1)
     pointframe.grid_columnconfigure((0,1,2),weight=1)
     pointframe.grid(row=1,column=1,rowspan=2,sticky='news')
     Label(pointframe,text='MY POINT',bg='#ffffff',fg='#000000',font="Helvetica 40 ").grid(row=0,sticky=NW,pady=10)
+
        
 def logoutclick() :
     updateframe.grid_forget()
@@ -543,7 +516,7 @@ mousetext = ['\nASUS P713\nROG HARPEACE','\nHYPERX PULSE\nFIREHASTE 2 MINI','\nR
 #HEADPHONE
 APPLEAIRPODSPRO2ND = PhotoImage(file='images/APPLEAIRPODSPRO2ND.png').subsample(5,5)
 SONYWHULT900N = PhotoImage(file='images/SONYWHULT900N.png').subsample(5,5)
-STEELSERIESARCTIS7 = PhotoImage(file='images/STEELSERIESARCTIS7.png').subsample(4,4)
+STEELSERIESARCTIS7 = PhotoImage(file='images/STEELSERIESARCTIS7.png').subsample(5,5)
 RAZERBARRACUDAPRO = PhotoImage(file='images/RAZERBARRACUDAPRO.png').subsample(5,5)
 ASUSROGDELTASWIRELESS = PhotoImage(file='images/ASUSROGDELTASWIRELESS.png').subsample(5,5)
 RAZERWIRELESSBLACKSHARKV2 = PhotoImage(file='images/RAZERWIRELESSBLACKSHARKV2.png').subsample(5,5)
