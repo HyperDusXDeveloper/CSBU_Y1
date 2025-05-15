@@ -39,7 +39,6 @@ def welcomelayout() :
     topupframe.grid_remove()
     checkoutframe.grid_remove()
     walletframe.grid_remove()
-    changeinformationframe.grid_remove()
     global user,pwd
     loginframe.rowconfigure((0,1,2,3,4,5,6,7,8),weight=1)
     loginframe.columnconfigure((0),weight=1)
@@ -72,7 +71,6 @@ def loginclick(user,pwd) :
     walletframe.grid_remove()
     checkoutframe.grid_remove()
     paymentconfirmframe.grid_remove()
-    changeinformationframe.grid_remove()
     if user == "" or pwd == "" :
         messagebox.showwarning("Admin : ","Please enter a username or password")
         user.focus_force()
@@ -109,7 +107,6 @@ def registerclick() :
     walletframe.grid_remove()
     checkoutframe.grid_remove()
     paymentconfirmframe.grid_remove()
-    changeinformationframe.grid_remove()
     registerframe.rowconfigure((0,1,2,3,4,5,6,7),weight=1)
     registerframe.columnconfigure((0,1),weight=1)
     registerframe.grid(row=1,column=1,columnspan=2,rowspan=2,sticky='news')
@@ -150,7 +147,6 @@ def registerclick() :
 def registration() : 
     topupframe.grid_remove()
     walletframe.grid_remove()
-    changeinformationframe.grid_remove()
     print("Hello from registration")
 
     if fullname.get() == "" :
@@ -226,7 +222,6 @@ def welcomepage(result) :
     topupframe.grid_remove()
     walletframe.grid_remove()
     welcomeframe['bg'] = "#ffffff"
-    changeinformationframe.grid_remove()
 
     fullname = result[0]
     
@@ -309,7 +304,6 @@ def settingsclick():
     checkoutframe.grid_remove()
     leftbottom.grid_remove()
     paymentconfirmframe.grid_remove()
-    changeinformationframe.grid_remove()
 
     mousebutton['bg'] = "#D4D4D4"
     keyboardbutton['bg'] = "#D4D4D4"
@@ -325,7 +319,7 @@ def settingsclick():
     Label(settingsframe,text="SETTINGS",fg='#000000',bg='#ffffff',font="Helvetica 50 bold").grid(row=1,column=0)
     Button(settingsframe,text="CHANGE INFORMATION",bg='#0066FF',fg='#ffffff',font="Helvetica 30 bold",width=20,command=changeinformation).grid(row=2,column=0)
     Button(settingsframe,text="LOG OUT",bg='#FFB428',fg='#ffffff',font="Helvetica 30 bold",width=20,command=logoutclick).grid(row=3,column=0)
-    Button(settingsframe,text="EXIT PROGRAM",bg='#FF5050',fg='#ffffff',font="Helvetica 30 bold",width=20,command=exit).grid(row=4,column=0)
+    Button(settingsframe,text="EXIT PROGRAM",bg='#FF5050',fg='#ffffff',font="Helvetica 30 bold",width=20,command=quit).grid(row=4,column=0)
 
 def changeinformation():
     global fullname_entry, year_entry, gender_entry
@@ -416,7 +410,6 @@ def mouseclick() :
     checkoutframe.grid_remove()
     settingsframe.grid_remove()
     paymentconfirmframe.grid_remove()
-    changeinformationframe.grid_remove()
 
     mousebutton['bg'] = "#0066FF"
     keyboardbutton['bg'] = "#D4D4D4"
@@ -464,7 +457,6 @@ def keyboardclick() :
     settingsframe.grid_remove()
     checkoutframe.grid_remove()
     paymentconfirmframe.grid_remove()
-    changeinformationframe.grid_remove()
     
     keyboardbutton['bg'] = "#0066FF"
     mousebutton['bg'] = "#D4D4D4"
@@ -513,7 +505,6 @@ def headphoneclick() :
     settingsframe.grid_remove()
     checkoutframe.grid_remove()
     paymentconfirmframe.grid_remove()
-    changeinformationframe.grid_remove()
 
     mousebutton['bg'] = "#D4D4D4"
     keyboardbutton['bg'] = "#D4D4D4"
@@ -557,7 +548,6 @@ def checkoutclick():
     pointframe.grid_remove()
     topupframe.grid_remove()
     settingsframe.grid_remove()
-    changeinformationframe.grid_remove()
     paymentconfirmframe.grid_remove()
 
     checkoutframe.grid_rowconfigure((0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29), weight=1)
@@ -700,7 +690,6 @@ def paymentconfirm():
     walletframe.grid_remove()
     pointframe.grid_remove()
     topupframe.grid_remove()
-    changeinformationframe.grid_remove()
     settingsframe.grid_remove()
     checkoutframe.grid_remove()
     paymentconfirmframe.grid_rowconfigure((0,1,2,3,4,5),weight=1)
@@ -756,7 +745,6 @@ def mywalletlayout() :
     mouseframe.grid_remove()
     keyboardframe.grid_remove()
     headphoneframe.grid_remove()
-    changeinformationframe.grid_remove()
     paymentconfirmframe.grid_remove()
     topupframe.grid_remove()
 
@@ -802,7 +790,6 @@ def topupwalletclick():
     headphoneframe.grid_remove()
     paymentconfirmframe.grid_remove()
     walletframe.grid_remove()
-    changeinformationframe.grid_remove()
 
     topupframe.grid_rowconfigure((0,1,2,3,4,5),weight=1)
     topupframe.grid_columnconfigure((0,1,2),weight=1)
@@ -898,7 +885,6 @@ def logoutclick() :
     topupframe.grid_remove()
     walletframe.grid_remove()
     paymentconfirmframe.grid_remove()
-    changeinformationframe.grid_remove()
     welcomelayout() 
 
 def resetspinboxvalues():
@@ -916,7 +902,6 @@ def randomclick():
     right.grid_remove()
     settingsframe.grid_remove()
     paymentconfirmframe.grid_remove()
-    changeinformationframe.grid_remove()
     optionnumber =(1,2,3)
     top.grid(row=0,columnspan=2,sticky='news')
     leftbottom.grid(row=2,column=0,sticky='news')
