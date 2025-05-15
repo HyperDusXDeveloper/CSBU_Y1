@@ -829,7 +829,7 @@ def topupwallet():
     if result is not None:
         walletmoney = int(result[6])
         wallet = walletmoney + int(topupmoney)
-        cursor.execute("SELECT wallet FROM partner WHERE username=?", (username.get()))
+        cursor.execute("SELECT wallet FROM partner WHERE username=?", (username.get(),))
         currentwallet = cursor.fetchone()[0]
         topupamount = int(topupmoney)
         newwallet = currentwallet + topupamount
