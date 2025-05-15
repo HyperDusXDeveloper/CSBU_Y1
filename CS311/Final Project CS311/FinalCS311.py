@@ -585,9 +585,9 @@ def checkoutclick():
         widget.destroy()
 
     Label(checkoutframe, text="CHECKOUT SUMMARY", font="Helvetica 30 bold", bg="#ffffff", fg="#0066FF").grid(row=0, column=0, columnspan=4, pady=5)
-    pointalreadyused = Label(checkoutframe, text="POINT DISCOUNT", font="Helvetica 15 bold", bg="#ffffff", fg="#000000")
+    pointalreadyused = Label(checkoutframe, text="POINT DISCOUNT", font="Helvetica 12 bold", bg="#ffffff", fg="#000000")
     pointalreadyused.grid(row=0, column=3,sticky=E)
-    pointdiscount50 = Label(checkoutframe, text=f"{point} // 50", font="Helvetica 15 bold", bg="#ffffff", fg="#000000")
+    pointdiscount50 = Label(checkoutframe, text=f"{point} // 50", font="Helvetica 12 bold", bg="#ffffff", fg="#000000")
     pointdiscount50.grid(row=0, column=3,sticky=SE)
 
     row = 1
