@@ -1,0 +1,24 @@
+0#]คำสั่งของความหมาย
+    conn = sqlite3.connect } เชื่อมต่อฐานข้อมูล
+    cursor = conn.cursor() } ส่งคำสั่ง SQL และ ดึงผลลัพธ์จาก SQL
+
+
+1#] เชื่อมต่อฐานข้อมูล SQL
+def connection() :
+    global conn,cursor
+    conn = sqlite3.connect("database/login.db")
+    cursor = conn.cursor()
+] --------------------------------------------------
+
+
+2#] สร้างตาราง ใน SQL
+cursor.execute('''CREATE TABLE IF NOT EXISTS users (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    age INTEGER)''') 
+] --------------------------------------------------
+
+
+3#] insert ข้อมูล 
+    insert into student values (column0inf,'1','2','3','4','5','6')
+
